@@ -419,16 +419,76 @@ export default function Hero() {
           {/* ── Right Column: Developer Illustration ── */}
           <div
             className="animate-fade-in-up animate-float animate-fade-in-up-delay-2"
-            style={{ width: '100%', maxWidth: '540px', justifySelf: 'center', position: 'relative' }}
+            style={{ width: '100%', maxWidth: '560px', justifySelf: 'center', position: 'relative' }}
           >
-            <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+            {/* Decorative background circle glow */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '120%',
+                height: '120%',
+                background: 'radial-gradient(circle, rgba(47, 111, 237, 0.06) 0%, transparent 60%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }}
+            />
+
+            {/* Floating Badge 1: UI/UX Design */}
+            <div
+              className="absolute z-10 px-4 py-2.5 rounded-xl bg-white/85 border border-[#D1DCF5] shadow-lg backdrop-blur-sm hidden sm:flex items-center gap-2"
+              style={{
+                top: '10%',
+                left: '-1.5rem',
+                animation: 'floatPulse 5s ease-in-out infinite',
+              }}
+            >
+              <span className="text-base">🎨</span>
+              <span className="text-xs font-bold text-slate-800 font-sans tracking-wide">
+                UI/UX Design
+              </span>
+            </div>
+
+            {/* Floating Badge 2: Next.js & React */}
+            <div
+              className="absolute z-10 px-4 py-2.5 rounded-xl bg-white/85 border border-[#D1DCF5] shadow-lg backdrop-blur-sm hidden sm:flex items-center gap-2"
+              style={{
+                top: '35%',
+                right: '-2rem',
+                animation: 'floatPulse 6s ease-in-out 0.5s infinite',
+              }}
+            >
+              <span className="text-base">⚡</span>
+              <span className="text-xs font-bold text-slate-800 font-sans tracking-wide">
+                Next.js & React
+              </span>
+            </div>
+
+            {/* Floating Badge 3: Clean Code */}
+            <div
+              className="absolute z-10 px-4 py-2.5 rounded-xl bg-white/85 border border-[#D1DCF5] shadow-lg backdrop-blur-sm hidden sm:flex items-center gap-2"
+              style={{
+                bottom: '25%',
+                left: '-2.5rem',
+                animation: 'floatPulse 5.5s ease-in-out 1s infinite',
+              }}
+            >
+              <span className="text-base">💻</span>
+              <span className="text-xs font-bold text-slate-800 font-sans tracking-wide">
+                Clean Code
+              </span>
+            </div>
+
+            <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
               <img
-                src="/images/hero-illustration.png"
-                alt="Web development and design illustration"
+                src="/images/hero-illustrator-processed.png"
+                alt="Code Vibe Creative Web Development and Design"
                 style={{
                   width: '100%',
                   height: 'auto',
-                  maxHeight: '460px',
+                  maxHeight: '480px',
                   objectFit: 'contain',
                 }}
               />
@@ -438,8 +498,8 @@ export default function Hero() {
             <div
               style={{
                 position: 'absolute',
-                bottom: '0.5rem',
-                right: '-1rem',
+                bottom: '1rem',
+                right: '-0.5rem',
                 background: '#ffffff',
                 border: '1px solid var(--color-border)',
                 borderRadius: '0.875rem',
