@@ -8,6 +8,7 @@ import FeaturedProjects from '@/components/home/FeaturedProjects';
 import Testimonials from '@/components/ui/Testimonials';
 import CTASection from '@/components/home/CTASection';
 import SectionHeading from '@/components/ui/SectionHeading';
+import CatCursorFollower from '@/components/home/CatCursorFollower';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
@@ -23,6 +24,7 @@ export const metadata: Metadata = generatePageMetadata({
 export default function HomePage() {
   return (
     <>
+      <CatCursorFollower />
       <Hero />
       <TrustBadges />
       <IllustratorSection />
