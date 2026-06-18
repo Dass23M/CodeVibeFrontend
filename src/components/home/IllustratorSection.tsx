@@ -7,31 +7,32 @@ const FEATURES = [
     emoji: '🎨',
     title: 'Pixel-Perfect UI/UX',
     description:
-      'Every interface is carefully crafted to deliver a stunning user experience — from color systems and typography to micro-animations and responsive layouts.',
+      'Every interface is carefully crafted — from color systems and typography to micro-animations and fully responsive layouts.',
   },
   {
     emoji: '⚡',
     title: 'Blazing Fast Performance',
     description:
-      'Built on Next.js and React with optimized asset loading, code splitting, and server-side rendering to achieve top Core Web Vitals scores.',
+      'Built on Next.js with optimized asset loading, code splitting, and SSR to achieve top Core Web Vitals scores.',
   },
   {
     emoji: '🔧',
     title: 'Scalable Architecture',
     description:
-      'Clean, modular code with a well-structured component tree, reusable hooks, and industry-standard design patterns that grow with your product.',
+      'Clean, modular code with reusable components, custom hooks, and industry-standard design patterns that grow with your product.',
   },
   {
     emoji: '📦',
     title: 'End-to-End Delivery',
     description:
-      'From initial wireframe to production deployment — I handle the full lifecycle so you can focus on your business, not the tech stack.',
+      'From initial wireframe to production deployment — I handle the full lifecycle so you can focus on your business.',
   },
 ];
 
 export default function IllustratorSection() {
   return (
     <section
+      id="why-code-vibe"
       style={{
         paddingTop: '5rem',
         paddingBottom: '5rem',
@@ -40,157 +41,178 @@ export default function IllustratorSection() {
         overflow: 'hidden',
       }}
     >
-      {/* Subtle background decoration */}
+      {/* Background decorations */}
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '-20%',
-          right: '-10%',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(47,111,237,0.06) 0%, transparent 70%)',
+          top: '-10%',
+          right: '-5%',
+          width: '480px',
+          height: '480px',
+          background: 'radial-gradient(circle, rgba(47,111,237,0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
+          borderRadius: '50%',
         }}
       />
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
-          bottom: '-15%',
-          left: '-8%',
-          width: '400px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(91,158,255,0.07) 0%, transparent 70%)',
+          bottom: '-10%',
+          left: '-5%',
+          width: '380px',
+          height: '380px',
+          background: 'radial-gradient(circle, rgba(91,158,255,0.06) 0%, transparent 70%)',
           pointerEvents: 'none',
+          borderRadius: '50%',
         }}
       />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        {/* Two-column grid */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))',
+            gridTemplateColumns: '1fr 1fr',
             gap: '4rem',
             alignItems: 'center',
           }}
         >
-          {/* ── Left Column: Illustration ── */}
+          {/* ════════════════════════════════
+              LEFT COLUMN — Illustration
+          ════════════════════════════════ */}
           <div
-            className="animate-fade-in-up"
             style={{
               position: 'relative',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              minHeight: '420px',
             }}
           >
-            {/* Decorative glow ring behind illustration */}
+            {/* Soft radial glow behind image */}
             <div
+              aria-hidden="true"
               style={{
                 position: 'absolute',
-                width: '90%',
-                height: '90%',
+                inset: '0',
+                background: 'radial-gradient(circle at 50% 55%, rgba(47,111,237,0.10) 0%, transparent 68%)',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(47,111,237,0.08) 0%, transparent 65%)',
                 pointerEvents: 'none',
               }}
             />
 
-            {/* Floating tool badge — top right */}
+            {/* Floating badge — top right */}
             <div
               style={{
                 position: 'absolute',
-                top: '8%',
-                right: '0',
+                top: '6%',
+                right: '2%',
                 background: '#ffffff',
-                border: '1px solid var(--color-border)',
+                border: '1px solid #D1DCF5',
                 borderRadius: '0.875rem',
-                padding: '0.6rem 1rem',
-                boxShadow: '0 6px 24px rgba(47,111,237,0.12)',
+                padding: '0.55rem 0.9rem',
+                boxShadow: '0 8px 24px rgba(47,111,237,0.13)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
+                zIndex: 3,
                 animation: 'floatPulse 5s ease-in-out infinite',
-                zIndex: 2,
               }}
             >
-              <span style={{ fontSize: '1rem' }}>🎨</span>
+              <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>🎨</span>
               <div>
-                <p style={{ margin: 0, fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-foreground)', fontFamily: 'var(--font-body)' }}>
+                <p style={{ margin: 0, fontSize: '0.73rem', fontWeight: 700, color: '#05070D', lineHeight: 1.3 }}>
                   UI/UX Design
                 </p>
-                <p style={{ margin: 0, fontSize: '0.65rem', color: 'var(--color-muted)' }}>
+                <p style={{ margin: 0, fontSize: '0.63rem', color: '#64748B', lineHeight: 1.3 }}>
                   Figma → Code
                 </p>
               </div>
             </div>
 
-            {/* Floating tool badge — bottom left */}
+            {/* Floating badge — bottom left */}
             <div
               style={{
                 position: 'absolute',
-                bottom: '12%',
-                left: '0',
+                bottom: '8%',
+                left: '2%',
                 background: '#ffffff',
-                border: '1px solid var(--color-border)',
+                border: '1px solid #D1DCF5',
                 borderRadius: '0.875rem',
-                padding: '0.6rem 1rem',
-                boxShadow: '0 6px 24px rgba(47,111,237,0.12)',
+                padding: '0.55rem 0.9rem',
+                boxShadow: '0 8px 24px rgba(47,111,237,0.13)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                animation: 'floatPulse 6s ease-in-out 1s infinite',
-                zIndex: 2,
+                zIndex: 3,
+                animation: 'floatPulse 6s ease-in-out 1.2s infinite',
               }}
             >
-              <span style={{ fontSize: '1rem' }}>💻</span>
+              <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>⚡</span>
               <div>
-                <p style={{ margin: 0, fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-foreground)', fontFamily: 'var(--font-body)' }}>
-                  Clean Code
+                <p style={{ margin: 0, fontSize: '0.73rem', fontWeight: 700, color: '#05070D', lineHeight: 1.3 }}>
+                  Next.js & React
                 </p>
-                <p style={{ margin: 0, fontSize: '0.65rem', color: 'var(--color-muted)' }}>
-                  Scalable & Maintainable
+                <p style={{ margin: 0, fontSize: '0.63rem', color: '#64748B', lineHeight: 1.3 }}>
+                  Production Ready
                 </p>
               </div>
             </div>
 
+            {/* The illustration image */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/hero-illustrator-processed.png"
               alt="Creative web design and development illustration"
               style={{
                 width: '100%',
-                maxWidth: '520px',
+                maxWidth: '500px',
                 height: 'auto',
                 objectFit: 'contain',
+                display: 'block',
                 position: 'relative',
-                zIndex: 1,
+                zIndex: 2,
                 animation: 'floatPulse 7s ease-in-out infinite',
-                filter: 'drop-shadow(0 20px 40px rgba(47,111,237,0.12))',
+                filter: 'drop-shadow(0 16px 36px rgba(47,111,237,0.14))',
               }}
             />
           </div>
 
-          {/* ── Right Column: Content ── */}
-          <div
-            className="animate-fade-in-up animate-fade-in-up-delay-2"
-            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
-          >
-            {/* Eyebrow */}
+          {/* ════════════════════════════════
+              RIGHT COLUMN — Content
+          ════════════════════════════════ */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+
+            {/* Eyebrow pill */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
                 width: 'fit-content',
-                background: 'var(--color-accent-light)',
-                border: '1px solid rgba(47,111,237,0.2)',
+                background: '#EBF1FD',
+                border: '1px solid rgba(47,111,237,0.22)',
                 borderRadius: '100px',
                 padding: '0.35rem 0.95rem',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
+                fontSize: '0.70rem',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
-                textTransform: 'uppercase' as const,
-                color: 'var(--color-accent)',
+                textTransform: 'uppercase',
+                color: '#2F6FED',
               }}
             >
               <span
@@ -198,7 +220,7 @@ export default function IllustratorSection() {
                   width: '7px',
                   height: '7px',
                   borderRadius: '50%',
-                  backgroundColor: 'var(--color-accent)',
+                  backgroundColor: '#2F6FED',
                   flexShrink: 0,
                 }}
               />
@@ -206,167 +228,182 @@ export default function IllustratorSection() {
             </div>
 
             {/* Heading */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div>
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontSize: 'clamp(1.85rem, 3.5vw, 2.75rem)',
                   fontWeight: 800,
                   lineHeight: 1.15,
                   letterSpacing: '-0.03em',
-                  color: 'var(--color-foreground)',
-                  margin: 0,
+                  color: '#05070D',
+                  margin: '0 0 0.75rem 0',
                 }}
               >
                 Crafted with{' '}
-                <span className="gradient-text">Precision & Passion</span>
+                <span
+                  style={{
+                    background: 'linear-gradient(135deg, #2F6FED 0%, #5B9EFF 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  Precision &amp; Passion
+                </span>
               </h2>
               <p
                 style={{
-                  fontSize: 'clamp(0.95rem, 1.8vw, 1.05rem)',
-                  color: 'var(--color-muted)',
+                  fontSize: '1rem',
+                  color: '#64748B',
                   lineHeight: 1.75,
                   margin: 0,
-                  maxWidth: '480px',
+                  maxWidth: '460px',
                 }}
               >
                 I don&apos;t just write code — I build experiences. Every project combines
-                thoughtful design, clean architecture, and optimized performance to deliver
+                thoughtful design, clean architecture, and optimised performance to deliver
                 something truly remarkable.
               </p>
             </div>
 
-            {/* Feature list */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {/* Feature cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {FEATURES.map((feature, idx) => (
                 <div
                   key={idx}
                   style={{
                     display: 'flex',
                     gap: '1rem',
-                    padding: '1.125rem 1.25rem',
+                    padding: '1rem 1.125rem',
                     backgroundColor: '#ffffff',
-                    border: '1px solid var(--color-border)',
+                    border: '1px solid #D1DCF5',
                     borderRadius: '0.875rem',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    alignItems: 'flex-start',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                    cursor: 'default',
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.transform = 'translateX(4px)';
-                    el.style.boxShadow = '0 6px 20px rgba(47,111,237,0.1)';
+                    el.style.transform = 'translateX(5px)';
+                    el.style.boxShadow = '0 6px 22px rgba(47,111,237,0.11)';
+                    el.style.borderColor = 'rgba(47,111,237,0.35)';
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.transform = 'translateX(0)';
                     el.style.boxShadow = 'none';
+                    el.style.borderColor = '#D1DCF5';
                   }}
                 >
                   <div
                     style={{
-                      width: '42px',
-                      height: '42px',
+                      width: '40px',
+                      height: '40px',
                       borderRadius: '10px',
-                      backgroundColor: 'var(--color-accent-light)',
+                      backgroundColor: '#EBF1FD',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '1.25rem',
+                      fontSize: '1.2rem',
                       flexShrink: 0,
+                      lineHeight: 1,
                     }}
                   >
                     {feature.emoji}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                    <span
+                  <div>
+                    <p
                       style={{
-                        fontSize: '0.92rem',
+                        margin: '0 0 0.2rem 0',
+                        fontSize: '0.9rem',
                         fontWeight: 700,
-                        color: 'var(--color-foreground)',
+                        color: '#05070D',
                         fontFamily: 'var(--font-body)',
                       }}
                     >
                       {feature.title}
-                    </span>
-                    <span
+                    </p>
+                    <p
                       style={{
-                        fontSize: '0.82rem',
-                        color: 'var(--color-muted)',
+                        margin: 0,
+                        fontSize: '0.8rem',
+                        color: '#64748B',
                         lineHeight: 1.6,
                       }}
                     >
                       {feature.description}
-                    </span>
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* CTA */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', marginTop: '0.5rem' }}>
+            {/* CTA buttons */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem', alignItems: 'center' }}>
               <Link
                 href="/services"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.6rem',
-                  height: '3rem',
-                  padding: '0 1.75rem',
-                  backgroundColor: 'var(--color-accent)',
+                  gap: '0.55rem',
+                  height: '2.9rem',
+                  padding: '0 1.6rem',
+                  backgroundColor: '#2F6FED',
                   color: '#ffffff',
-                  borderRadius: '0.75rem',
-                  fontFamily: 'var(--font-body)',
+                  borderRadius: '0.7rem',
                   fontWeight: 700,
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                   textDecoration: 'none',
-                  transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                  boxShadow: '0 4px 18px rgba(47,111,237,0.25)',
+                  transition: 'all 0.22s ease',
+                  boxShadow: '0 4px 16px rgba(47,111,237,0.28)',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.backgroundColor = 'var(--color-accent-hover)';
+                  el.style.backgroundColor = '#1A56CC';
                   el.style.transform = 'translateY(-2px)';
-                  el.style.boxShadow = '0 8px 24px rgba(47,111,237,0.35)';
+                  el.style.boxShadow = '0 8px 24px rgba(47,111,237,0.38)';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.backgroundColor = 'var(--color-accent)';
+                  el.style.backgroundColor = '#2F6FED';
                   el.style.transform = 'translateY(0)';
-                  el.style.boxShadow = '0 4px 18px rgba(47,111,237,0.25)';
+                  el.style.boxShadow = '0 4px 16px rgba(47,111,237,0.28)';
                 }}
               >
                 Explore Services
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Link>
+
               <Link
                 href="/portfolio"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.6rem',
-                  height: '3rem',
-                  padding: '0 1.75rem',
+                  gap: '0.55rem',
+                  height: '2.9rem',
+                  padding: '0 1.6rem',
                   backgroundColor: 'transparent',
-                  color: 'var(--color-foreground)',
-                  border: '1.5px solid var(--color-border)',
-                  borderRadius: '0.75rem',
-                  fontFamily: 'var(--font-body)',
+                  color: '#05070D',
+                  border: '1.5px solid #D1DCF5',
+                  borderRadius: '0.7rem',
                   fontWeight: 600,
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                   textDecoration: 'none',
-                  transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transition: 'all 0.22s ease',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.borderColor = 'var(--color-accent)';
-                  el.style.color = 'var(--color-accent)';
-                  el.style.backgroundColor = 'var(--color-accent-light)';
+                  el.style.borderColor = '#2F6FED';
+                  el.style.color = '#2F6FED';
+                  el.style.backgroundColor = '#EBF1FD';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.borderColor = 'var(--color-border)';
-                  el.style.color = 'var(--color-foreground)';
+                  el.style.borderColor = '#D1DCF5';
+                  el.style.color = '#05070D';
                   el.style.backgroundColor = 'transparent';
                 }}
               >
@@ -375,6 +412,15 @@ export default function IllustratorSection() {
             </div>
           </div>
         </div>
+
+        {/* ── Mobile: stack columns vertically ── */}
+        <style>{`
+          @media (max-width: 768px) {
+            #why-code-vibe > div > div {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );
