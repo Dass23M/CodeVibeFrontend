@@ -187,7 +187,7 @@ export default function CatCursorFollower() {
           <path
             className="cat-tail"
             d="M 12 21 Q 6 15 9 10"
-            stroke="#1E293B"
+            stroke="#2F6FED"
             strokeWidth="3.2"
             strokeLinecap="round"
             fill="none"
@@ -200,7 +200,7 @@ export default function CatCursorFollower() {
             y1="23"
             x2="13"
             y2="30"
-            stroke="#1E293B"
+            stroke="#2F6FED"
             strokeWidth="2.8"
             strokeLinecap="round"
           />
@@ -210,10 +210,10 @@ export default function CatCursorFollower() {
             y1="23"
             x2="15"
             y2="30"
-            stroke="#253549"
+            stroke="#1d5ad3"
             strokeWidth="2.8"
             strokeLinecap="round"
-            opacity="0.8"
+            opacity="0.85"
           />
           <line
             className="cat-leg leg-front-left"
@@ -221,7 +221,7 @@ export default function CatCursorFollower() {
             y1="23"
             x2="24"
             y2="30"
-            stroke="#1E293B"
+            stroke="#2F6FED"
             strokeWidth="2.8"
             strokeLinecap="round"
           />
@@ -231,29 +231,29 @@ export default function CatCursorFollower() {
             y1="23"
             x2="26"
             y2="30"
-            stroke="#253549"
+            stroke="#1d5ad3"
             strokeWidth="2.8"
             strokeLinecap="round"
-            opacity="0.8"
+            opacity="0.85"
           />
 
           {/* Body */}
-          <ellipse cx="19" cy="20" rx="9" ry="6.5" fill="#1E293B" />
+          <ellipse cx="19" cy="20" rx="9" ry="6.5" fill="#2F6FED" />
 
           {/* Head */}
-          <circle cx="26" cy="15" r="5.5" fill="#1E293B" />
+          <circle cx="26" cy="15" r="5.5" fill="#2F6FED" />
 
           {/* Ears */}
-          <polygon points="22.5,12 23.5,7 26,10.5" fill="#1E293B" />
-          <polygon points="27,10.5 29.5,7 30.5,12" fill="#1E293B" />
+          <polygon points="22.5,12 23.5,7 26,10.5" fill="#2F6FED" />
+          <polygon points="27,10.5 29.5,7 30.5,12" fill="#2F6FED" />
 
-          {/* Glowing Eyes */}
-          <circle cx="27.5" cy="14" r="1.1" fill="#2F6FED" />
+          {/* Eyes (contrast white) */}
+          <circle cx="27.5" cy="14" r="1.1" fill="#FFFFFF" />
 
-          {/* Collar */}
+          {/* Collar (contrast dark slate) */}
           <path
             d="M 23 18 A 5 5 0 0 0 24.5 19.5"
-            stroke="#2F6FED"
+            stroke="#1E293B"
             strokeWidth="1.2"
             strokeLinecap="round"
           />
