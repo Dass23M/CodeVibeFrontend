@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react';
 export default function CatCursorFollower() {
   const catRef = useRef<HTMLDivElement>(null);
   const rippleContainerRef = useRef<HTMLDivElement>(null);
-  const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
 
   // Position and physics values stored in refs to prevent React re-renders at 60fps
   const pos = useRef({
@@ -21,41 +20,17 @@ export default function CatCursorFollower() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Center the cat initially
-    pos.current.currentX = window.innerWidth / 2;
-    pos.current.currentY = window.innerHeight / 2;
+    // Initialize the cat in the bottom-right corner of the viewport
+    pos.current.currentX = window.innerWidth - 60;
+    pos.current.currentY = window.innerHeight - 80;
     pos.current.targetX = pos.current.currentX;
     pos.current.targetY = pos.current.currentY;
 
-    // ── Inactivity handler ──
-    const resetInactivityTimer = () => {
-      const cat = catRef.current;
-      if (cat) {
-        cat.classList.add('active-visible');
-      }
-
-      if (inactivityTimer.current) {
-        clearTimeout(inactivityTimer.current);
-      }
-
-      inactivityTimer.current = setTimeout(() => {
-        const catEl = catRef.current;
-        if (catEl) {
-          catEl.classList.remove('active-visible');
-        }
-      }, 4000); // Fades out after 4 seconds of inactivity
-    };
-
-    // ── Mouse & Touch Event Handlers ──
-    const handleMouseMove = (e: MouseEvent) => {
-      resetInactivityTimer();
-      // Only follow mouse if not in the middle of a pounce
-      if (!pos.current.isPouncing) {
-        // Offset by 18px (half of 36px size) to center under cursor
-        pos.current.targetX = e.clientX - 18;
-        pos.current.targetY = e.clientY - 18;
-      }
-    };
+    // Show the cat once mounted
+    const cat = catRef.current;
+    if (cat) {
+      cat.classList.add('active-visible');
+    }
 
     const spawnRipple = (x: number, y: number) => {
       const container = rippleContainerRef.current;
@@ -79,16 +54,14 @@ export default function CatCursorFollower() {
     };
 
     const handleClick = (e: MouseEvent) => {
-      resetInactivityTimer();
-      
       // Target the click spot
       pos.current.targetX = e.clientX - 18;
       pos.current.targetY = e.clientY - 18;
       pos.current.isPouncing = true;
 
-      const cat = catRef.current;
-      if (cat) {
-        cat.classList.add('pouncing');
+      const catEl = catRef.current;
+      if (catEl) {
+        catEl.classList.add('pouncing');
       }
 
       spawnRipple(e.clientX, e.clientY);
@@ -96,42 +69,38 @@ export default function CatCursorFollower() {
 
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches && e.touches[0]) {
-        resetInactivityTimer();
         const touch = e.touches[0];
         
         pos.current.targetX = touch.clientX - 18;
         pos.current.targetY = touch.clientY - 18;
         pos.current.isPouncing = true;
 
-        const cat = catRef.current;
-        if (cat) {
-          cat.classList.add('pouncing');
+        const catEl = catRef.current;
+        if (catEl) {
+          catEl.classList.add('pouncing');
         }
 
         spawnRipple(touch.clientX, touch.clientY);
       }
     };
 
-    // Bind listeners
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    // Bind click/touch events (no mousemove)
     window.addEventListener('click', handleClick, { passive: true });
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
-
-    // Initial activation
-    resetInactivityTimer();
 
     // ── Animation Frame loop for smooth translation ──
     let frameId: number;
 
     const tick = () => {
-      const cat = catRef.current;
-      if (!cat) {
+      const catEl = catRef.current;
+      if (!catEl) {
         frameId = requestAnimationFrame(tick);
         return;
       }
 
       const p = pos.current;
-      const easing = p.isPouncing ? 0.13 : 0.065; // runs faster when pouncing
+      // Slower, smooth jog pace to the target
+      const easing = 0.035;
 
       const dx = p.targetX - p.currentX;
       const dy = p.targetY - p.currentY;
@@ -145,7 +114,7 @@ export default function CatCursorFollower() {
         p.isMoving = false;
         if (p.isPouncing) {
           p.isPouncing = false;
-          cat.classList.remove('pouncing');
+          catEl.classList.remove('pouncing');
         }
       }
 
@@ -166,15 +135,15 @@ export default function CatCursorFollower() {
       }
 
       // Perform fast translate3d transform to avoid browser layout passes
-      cat.style.transform = `translate3d(${p.currentX}px, ${p.currentY}px, 0) scaleX(${scaleX}) rotate(${tilt}deg)`;
+      catEl.style.transform = `translate3d(${p.currentX}px, ${p.currentY}px, 0) scaleX(${scaleX}) rotate(${tilt}deg)`;
 
       // Handle leg states
       if (p.isMoving) {
-        cat.classList.add('running');
-        cat.classList.remove('idle');
+        catEl.classList.add('running');
+        catEl.classList.remove('idle');
       } else {
-        cat.classList.add('idle');
-        cat.classList.remove('running');
+        catEl.classList.add('idle');
+        catEl.classList.remove('running');
       }
 
       frameId = requestAnimationFrame(tick);
@@ -183,11 +152,9 @@ export default function CatCursorFollower() {
     frameId = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
       window.removeEventListener('touchstart', handleTouchStart);
       cancelAnimationFrame(frameId);
-      if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
     };
   }, []);
 
