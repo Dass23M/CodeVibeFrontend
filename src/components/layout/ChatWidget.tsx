@@ -298,9 +298,18 @@ export default function ChatWidget() {
   const [isTyping, setIsTyping] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
   const [unread, setUnread] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Init welcome message
   useEffect(() => {
@@ -312,13 +321,17 @@ export default function ChatWidget() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  // Focus input when opened
+  // Focus input when opened + lock body scroll on mobile
   useEffect(() => {
     if (open) {
       setUnread(0);
       setTimeout(() => inputRef.current?.focus(), 300);
+      if (isMobile) document.body.classList.add('chat-open');
+    } else {
+      document.body.classList.remove('chat-open');
     }
-  }, [open]);
+    return () => { document.body.classList.remove('chat-open'); };
+  }, [open, isMobile]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -469,12 +482,33 @@ export default function ChatWidget() {
         role="dialog"
         aria-label="Code Vibe AI Chat"
         aria-modal="true"
-        style={{
+        className="chat-panel"
+        style={isMobile ? {
+          // Mobile: full-width bottom sheet
           position: 'fixed',
-          bottom: '10.25rem',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '88dvh',
+          zIndex: 997,
+          borderRadius: '1.25rem 1.25rem 0 0',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          boxShadow: '0 -8px 40px rgba(0,0,0,0.18)',
+          transform: open ? 'translateY(0)' : 'translateY(100%)',
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? 'auto' : 'none',
+          transition: 'transform 0.38s cubic-bezier(0.16,1,0.3,1), opacity 0.25s ease',
+          transformOrigin: 'bottom center',
+        } : {
+          // Desktop: compact corner card
+          position: 'fixed',
+          bottom: '10rem',
           right: '1.75rem',
-          width: 'min(420px, calc(100vw - 2rem))',
-          height: 'min(580px, calc(100vh - 11rem))',
+          width: '360px',
+          height: '480px',
           zIndex: 997,
           borderRadius: '1.25rem',
           overflow: 'hidden',
@@ -488,22 +522,29 @@ export default function ChatWidget() {
           transformOrigin: 'bottom right',
         }}
       >
+        {/* Mobile drag handle */}
+        {isMobile && (
+          <div style={{ backgroundColor: '#fff', paddingTop: '0.6rem', paddingBottom: '0.1rem', display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+            <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: '#D1DCF5' }} />
+          </div>
+        )}
+
         {/* Header */}
         <div
           style={{
             background: 'linear-gradient(135deg, #2F6FED 0%, #1A56CC 100%)',
-            padding: '1rem 1.1rem',
+            padding: isMobile ? '0.7rem 1rem' : '0.85rem 1rem',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
+            gap: '0.65rem',
             flexShrink: 0,
           }}
         >
           {/* Bot avatar */}
           <div
             style={{
-              width: '40px',
-              height: '40px',
+              width: isMobile ? '34px' : '36px',
+              height: isMobile ? '34px' : '36px',
               borderRadius: '50%',
               backgroundColor: 'rgba(255,255,255,0.18)',
               display: 'flex',
@@ -512,7 +553,7 @@ export default function ChatWidget() {
               flexShrink: 0,
             }}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <rect x="2" y="7" width="20" height="13" rx="3" fill="white" opacity="0.95" />
               <rect x="8.5" y="3" width="7" height="6" rx="2" fill="white" />
               <circle cx="8" cy="13" r="1.8" fill="#2F6FED" />
@@ -522,21 +563,36 @@ export default function ChatWidget() {
           </div>
 
           {/* Name & status */}
-          <div style={{ flex: 1 }}>
-            <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ color: '#fff', fontWeight: 700, fontSize: isMobile ? '0.88rem' : '0.92rem', lineHeight: 1.2 }}>
               Vibe AI Assistant
             </div>
-            <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.72rem', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.15rem' }}>
-              <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#4ADE80', boxShadow: '0 0 6px #4ADE80' }} />
-              Online · Typically replies instantly
+            <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.68rem', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.12rem' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#4ADE80', boxShadow: '0 0 5px #4ADE80', flexShrink: 0 }} />
+              <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Online · Replies instantly</span>
             </div>
           </div>
 
-          {/* Branding */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.6rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Powered by</span>
-            <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Code Vibe</span>
-          </div>
+          {/* Close button on mobile header */}
+          {isMobile && (
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+              style={{ background: 'rgba(255,255,255,0.18)', border: 'none', borderRadius: '50%', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          )}
+
+          {/* Branding — desktop only */}
+          {!isMobile && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flexShrink: 0 }}>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.58rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Powered by</span>
+              <span style={{ color: '#fff', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Code Vibe</span>
+            </div>
+          )}
         </div>
 
         {/* Messages area */}
@@ -544,10 +600,11 @@ export default function ChatWidget() {
           style={{
             flex: 1,
             overflowY: 'auto',
-            padding: '1rem 0.75rem 0.5rem',
+            padding: isMobile ? '0.75rem 0.65rem 0.4rem' : '0.85rem 0.75rem 0.4rem',
             backgroundColor: '#F4F7FF',
             display: 'flex',
             flexDirection: 'column',
+            WebkitOverflowScrolling: 'touch',
           }}
         >
           {messages.map((msg) => (
@@ -569,8 +626,8 @@ export default function ChatWidget() {
           style={{
             display: 'flex',
             alignItems: 'flex-end',
-            gap: '0.5rem',
-            padding: '0.65rem 0.75rem',
+            gap: '0.45rem',
+            padding: isMobile ? '0.55rem 0.65rem 0.75rem' : '0.6rem 0.75rem',
             backgroundColor: '#ffffff',
             borderTop: '1px solid #E8EFFE',
             flexShrink: 0,
@@ -588,16 +645,17 @@ export default function ChatWidget() {
               resize: 'none',
               border: '1.5px solid #D1DCF5',
               borderRadius: '0.75rem',
-              padding: '0.6rem 0.8rem',
+              padding: isMobile ? '0.55rem 0.7rem' : '0.6rem 0.8rem',
               fontFamily: 'inherit',
-              fontSize: '0.82rem',
+              fontSize: isMobile ? '1rem' : '0.82rem', // 1rem prevents iOS auto-zoom
               lineHeight: '1.4',
               color: '#1E293B',
               backgroundColor: '#F4F7FF',
               outline: 'none',
-              maxHeight: '72px',
+              maxHeight: '64px',
               overflowY: 'auto',
               transition: 'border-color 0.2s',
+              WebkitAppearance: 'none',
             }}
             onFocus={(e) => { e.currentTarget.style.borderColor = '#2F6FED'; }}
             onBlur={(e) => { e.currentTarget.style.borderColor = '#D1DCF5'; }}
@@ -672,6 +730,15 @@ export default function ChatWidget() {
         @keyframes msgSlideIn {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0);   }
+        }
+
+        /* Prevent background scroll when mobile chat is open */
+        @media (max-width: 639px) {
+          body.chat-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+          }
         }
       `}</style>
     </>
