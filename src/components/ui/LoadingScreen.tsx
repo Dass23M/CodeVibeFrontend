@@ -28,12 +28,12 @@ export default function LoadingScreen() {
         if (prev >= 85) {
           return prev; // Stop at 85% until window 'load' event fires
         }
-        // Increment by random values to feel natural
-        const next = prev + Math.floor(Math.random() * 8) + 4;
+        // Increment by smaller random values to feel natural and slower
+        const next = prev + Math.floor(Math.random() * 5) + 2;
         return Math.min(next, 85);
       });
-      // Call recursively with slight random delay
-      timer = setTimeout(updateProgress, Math.random() * 150 + 80);
+      // Wider random delay = slower, more gradual fill
+      timer = setTimeout(updateProgress, Math.random() * 280 + 160);
     };
 
     updateProgress();
@@ -52,7 +52,7 @@ export default function LoadingScreen() {
           document.body.style.overflow = '';
           setShouldRender(false);
         }, 850); // Matches transition-duration
-      }, 350);
+      }, 700); // Hold at 100% for longer before fading out
     };
 
     // If document is already loaded, trigger completion
@@ -62,10 +62,10 @@ export default function LoadingScreen() {
       window.addEventListener('load', handleLoadComplete);
     }
 
-    // 3. Fallback loader to prevent page being stuck if a asset hangs
+    // 3. Fallback loader to prevent page being stuck if an asset hangs
     const fallbackTimer = setTimeout(() => {
       handleLoadComplete();
-    }, 3500);
+    }, 6000);
 
     return () => {
       clearTimeout(timer);

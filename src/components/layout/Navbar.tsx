@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { NAV_LINKS } from '@/lib/constants';
 
@@ -41,36 +42,22 @@ export default function Navbar() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
             textDecoration: 'none',
             flexShrink: 0,
           }}
         >
-          <span
+          <Image
+            src="/images/logo.png"
+            alt="Code Vibe"
+            width={140}
+            height={52}
+            priority
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '1.125rem',
-              fontWeight: 700,
-              color: 'var(--color-accent)',
-              background: 'var(--color-accent-light)',
-              padding: '0.2rem 0.5rem',
-              borderRadius: '0.375rem',
-              letterSpacing: '-0.03em',
+              objectFit: 'contain',
+              height: '52px',
+              width: 'auto',
             }}
-          >
-            {'</>'}
-          </span>
-          <span
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.125rem',
-              fontWeight: 700,
-              color: 'var(--color-foreground)',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Code Vibe
-          </span>
+          />
         </Link>
 
         {/* ── Desktop Nav ── */}
