@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '@/lib/constants';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
-  const [activePath, setActivePath] = useState('/');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
-    setActivePath(window.location.pathname);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -35,7 +35,7 @@ export default function Navbar() {
         boxShadow: scrolled ? '0 1px 20px rgba(47,111,237,0.07)' : 'none',
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', height: '4.5rem' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', height: '5rem' }}>
         {/* ── Logo ── */}
         <Link
           href="/"
@@ -49,12 +49,12 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="Code Vibe"
-            width={140}
-            height={52}
+            width={180}
+            height={68}
             priority
             style={{
               objectFit: 'contain',
-              height: '52px',
+              height: '68px',
               width: 'auto',
             }}
           />
@@ -72,7 +72,7 @@ export default function Navbar() {
           className="hide-mobile"
         >
           {NAV_LINKS.map((link) => {
-            const isActive = activePath === link.href;
+            const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
@@ -201,8 +201,8 @@ export default function Navbar() {
                   borderRadius: '0.5rem',
                   textDecoration: 'none',
                   transition: 'background 0.2s',
-                  backgroundColor: activePath === link.href ? 'var(--color-accent-light)' : 'transparent',
-                  color: activePath === link.href ? 'var(--color-accent)' : 'var(--color-foreground-2)',
+                  backgroundColor: pathname === link.href ? 'var(--color-accent-light)' : 'transparent',
+                  color: pathname === link.href ? 'var(--color-accent)' : 'var(--color-foreground-2)',
                 }}
               >
                 {link.label}

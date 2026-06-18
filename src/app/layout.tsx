@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppWidget from '@/components/layout/WhatsAppWidget';
 import LoadingScreen from '@/components/ui/LoadingScreen';
+import PageTransitionLoader from '@/components/ui/PageTransitionLoader';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
 
 // Display font — headings, hero text
@@ -87,6 +88,7 @@ export default function RootLayout({
         style={{ overflowX: 'hidden' }}
       >
         <LoadingScreen />
+        <PageTransitionLoader />
         <Navbar />
         <main style={{ paddingTop: '0' }}>
           {children}
