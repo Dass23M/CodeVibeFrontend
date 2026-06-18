@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppWidget from '@/components/layout/WhatsAppWidget';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import PageTransitionLoader from '@/components/ui/PageTransitionLoader';
+import ChatWidget from '@/components/layout/ChatWidget';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
 
 // Display font — headings, hero text
@@ -94,6 +95,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatWidget />
         <WhatsAppWidget />
       </body>
     </html>
