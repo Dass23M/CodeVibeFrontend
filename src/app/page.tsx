@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
 import TrustBadges from '@/components/home/TrustBadges';
+import IllustratorSection from '@/components/home/IllustratorSection';
 import TechStackMarquee from '@/components/home/TechStackMarquee';
 import PillarsSection from '@/components/home/PillarsSection';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
@@ -24,6 +25,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustBadges />
+      <IllustratorSection />
       <TechStackMarquee />
       <PillarsSection />
       <FeaturedProjects />
