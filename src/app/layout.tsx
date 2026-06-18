@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppWidget from '@/components/layout/WhatsAppWidget';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
 
 // Display font — headings, hero text
@@ -85,6 +86,7 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
         style={{ overflowX: 'hidden' }}
       >
+        <LoadingScreen />
         <Navbar />
         <main style={{ paddingTop: '0' }}>
           {children}
