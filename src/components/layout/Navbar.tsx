@@ -17,6 +17,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu on route change (including browser back button)
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+
   return (
     <header
       style={{
@@ -26,13 +32,13 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: 'all 0.3s ease',
-        backgroundColor: scrolled ? 'rgba(255,255,255,0.92)' : '#ffffff',
+        backgroundColor: scrolled ? 'rgba(255,255,255,0.72)' : '#ffffff',
         borderBottom: scrolled
-          ? '1px solid var(--color-border)'
+          ? '1px solid rgba(0,0,0,0.05)'
           : '1px solid transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        boxShadow: scrolled ? '0 1px 20px rgba(47,111,237,0.07)' : 'none',
+        backdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'none',
+        boxShadow: scrolled ? '0 1px 20px rgba(0,0,0,0.02)' : 'none',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', height: '5rem' }}>
@@ -111,30 +117,7 @@ export default function Navbar() {
         {/* ── CTA Button ── */}
         <Link
           href="/quote"
-          className="hide-mobile"
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.875rem',
-            fontWeight: 600,
-            color: '#ffffff',
-            backgroundColor: 'var(--color-accent)',
-            padding: '0.55rem 1.25rem',
-            borderRadius: '0.625rem',
-            textDecoration: 'none',
-            transition: 'all 0.2s ease',
-            flexShrink: 0,
-            letterSpacing: '0.01em',
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--color-accent-hover)';
-            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
-            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 12px rgba(47,111,237,0.3)';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--color-accent)';
-            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
-            (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
-          }}
+          className="hide-mobile btn-primary-sm"
         >
           Get a Free Quote
         </Link>
@@ -211,18 +194,11 @@ export default function Navbar() {
             <Link
               href="/quote"
               onClick={() => setMenuOpen(false)}
+              className="btn-primary"
               style={{
-                display: 'block',
-                marginTop: '0.75rem',
-                textAlign: 'center',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.95rem',
-                fontWeight: 600,
-                color: '#ffffff',
-                backgroundColor: 'var(--color-accent)',
-                padding: '0.7rem 1rem',
-                borderRadius: '0.625rem',
-                textDecoration: 'none',
+                marginTop: '1rem',
+                width: '100%',
+                justifyContent: 'center'
               }}
             >
               Get a Free Quote

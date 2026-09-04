@@ -277,10 +277,26 @@ export default function Footer() {
           <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
             © {year} Code Vibe. All rights reserved. Gampaha, Sri Lanka 🇱🇰
           </p>
-          <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
-            Built with{' '}
-            <span style={{ color: 'var(--color-accent)' }}>Next.js</span> & ❤️
-          </p>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Link
+              href="/privacy-policy"
+              style={{
+                fontSize: '0.8rem',
+                color: 'rgba(255,255,255,0.35)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.35)'; }}
+            >
+              Privacy Policy
+            </Link>
+            <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
+            <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
+              Built with{' '}
+              <span style={{ color: 'var(--color-accent)' }}>Next.js</span> & ❤️
+            </p>
+          </div>
         </div>
       </div>
     </footer>

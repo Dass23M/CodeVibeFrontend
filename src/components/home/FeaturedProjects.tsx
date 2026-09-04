@@ -31,12 +31,8 @@ export default function FeaturedProjects() {
               {/* Cover Image */}
               <div
                 style={{
-                  height:         '200px',
-                  background:     idx === 0
-                    ? 'linear-gradient(135deg, #1e3a5f 0%, #2F6FED 100%)'
-                    : idx === 1
-                    ? 'linear-gradient(135deg, #1a2840 0%, #0ea5e9 100%)'
-                    : 'linear-gradient(135deg, #0f1923 0%, #4B87F0 100%)',
+                  height:         '240px',
+                  backgroundColor: 'var(--color-surface-2)',
                   display:        'flex',
                   alignItems:     'center',
                   justifyContent: 'center',
@@ -44,19 +40,11 @@ export default function FeaturedProjects() {
                   overflow:       'hidden',
                 }}
               >
-                <div
-                  style={{
-                    position:       'absolute',
-                    inset:          0,
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                  }}
-                />
                 <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
-                    {['// FitSync', '// Lost & Found', '// CodeNews.lk'][idx]}
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-muted)', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                    {['FitSync', 'Lost & Found', 'CodeNews.lk'][idx]}
                   </p>
-                  <p style={{ fontSize: '2.5rem', margin: 0 }}>
+                  <p style={{ fontSize: '3rem', margin: 0 }}>
                     {['💪', '🔍', '📰'][idx]}
                   </p>
                 </div>
@@ -112,9 +100,9 @@ export default function FeaturedProjects() {
           ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '4rem' }}>
           <Link href="/portfolio" className="btn-outline">
-            View All Projects →
+            View All Projects
           </Link>
         </div>
       </div>

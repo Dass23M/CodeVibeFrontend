@@ -84,18 +84,12 @@ export default function PortfolioPage() {
               <article
                 key={project.slug}
                 id={project.slug}
-                style={{
-                  display:             'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
-                  gap:                 '3rem',
-                  alignItems:          'center',
-                  direction:           isEven ? 'ltr' : 'rtl',
-                }}
+                className={`portfolio-grid ${isEven ? 'portfolio-grid-even' : 'portfolio-grid-odd'}`}
               >
                 {/* Visual */}
                 <div
+                  className="portfolio-visual"
                   style={{
-                    direction:       'ltr',
                     borderRadius:    '1.25rem',
                     overflow:        'hidden',
                     height:          '380px',
@@ -138,7 +132,7 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Content */}
-                <div style={{ direction: 'ltr', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div className="portfolio-content" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-accent)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                     Case Study {String(idx + 1).padStart(2, '0')}
                   </span>

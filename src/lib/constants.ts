@@ -11,16 +11,19 @@ export const NAV_LINKS = [
   { label: 'Portfolio',   href: '/portfolio' },
   { label: 'Process',     href: '/process' },
   { label: 'Blog',        href: '/blog' },
+  { label: 'About',       href: '/about' },
+  { label: 'Contact',     href: '/contact' },
 ] as const;
 
 // ===========================
 //  CONTACT / SOCIAL
 // ===========================
 
-export const WHATSAPP_NUMBER = '94701234567'; // Replace with real number
+// Read from env vars — set in .env.local for real values
+export const WHATSAPP_NUMBER  = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER  ?? '94701234567';
 export const WHATSAPP_MESSAGE = "Hi! I'm interested in your web development services.";
-export const CALENDLY_URL    = '#'; // Replace with real Calendly URL
-export const EMAIL_ADDRESS   = 'hello@codevibe.lk';
+export const CALENDLY_URL     = process.env.NEXT_PUBLIC_CALENDLY_URL     ?? `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '94701234567'}`;
+export const EMAIL_ADDRESS    = 'hello@codevibe.lk';
 
 export const SOCIAL_LINKS = {
   github:   'https://github.com/codevibe-lk',

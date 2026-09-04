@@ -248,9 +248,7 @@ export default function TechStackMarquee() {
       style={{
         paddingTop: '4rem',
         paddingBottom: '4rem',
-        backgroundColor: '#F4F7FF',
-        borderTop: '1px solid #D1DCF5',
-        borderBottom: '1px solid #D1DCF5',
+        backgroundColor: 'var(--color-background)',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -338,7 +336,7 @@ export default function TechStackMarquee() {
               top: 0,
               bottom: 0,
               width: '8rem',
-              background: `linear-gradient(to ${side === 'left' ? 'right' : 'left'}, #F4F7FF 0%, transparent 100%)`,
+              background: `linear-gradient(to ${side === 'left' ? 'right' : 'left'}, var(--color-background) 0%, transparent 100%)`,
               zIndex: 2,
               pointerEvents: 'none',
             }}

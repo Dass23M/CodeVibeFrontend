@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import type { Metadata } from 'next';
 import { submitLead } from '@/lib/api';
 import type { ProjectType, BudgetRange, Timeline } from '@/types/quote';
-import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE, EMAIL_ADDRESS, CALENDLY_URL } from '@/lib/constants';
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from '@/lib/constants';
 
 const PROJECT_TYPES: ProjectType[] = ['Landing Page', 'Full Web App', 'API Integration', 'E-commerce', 'Other'];
 const BUDGET_RANGES: BudgetRange[] = ['Under 50k', '50k - 150k', '150k - 300k', '300k+'];

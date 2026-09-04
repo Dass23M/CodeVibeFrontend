@@ -102,8 +102,8 @@ export function localBusinessSchema() {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '7.0840',
-      longitude: '80.0098',
+      latitude: '7.0908',
+      longitude: '80.0000',
     },
     areaServed: {
       '@type': 'Country',

@@ -12,7 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
-  return generatePageMetadata({ title, path: `/blog/${slug}` });
+  return {
+    ...generatePageMetadata({ title, path: `/blog/${slug}` }),
+    // No-index until the article has real content
+    robots: { index: false, follow: false },
+  };
 }
 
 export default async function BlogPostPage({ params }: Props) {

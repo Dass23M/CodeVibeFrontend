@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* ===== Color Palette — Code Vibe (White Background Brand) ===== */
+  /* ===== Color Palette — Premium Apple-Like ===== */
   --color-background:    #FFFFFF;
-  --color-surface:       #F4F7FF;
-  --color-surface-2:     #E8EFFE;
-  --color-surface-dark:  #05070D;
-  --color-foreground:    #05070D;
-  --color-foreground-2:  #1E293B;
-  --color-accent:        #2F6FED;
-  --color-accent-hover:  #1A56CC;
-  --color-accent-light:  #EBF1FD;
-  --color-muted:         #64748B;
-  --color-border:        #D1DCF5;
-  --color-border-dark:   #C0CEEE;
+  --color-surface:       #F5F5F7;
+  --color-surface-2:     #EBEBEF;
+  --color-surface-dark:  #1D1D1F;
+  --color-foreground:    #1D1D1F;
+  --color-foreground-2:  #424245;
+  --color-accent:        #0066CC;
+  --color-accent-hover:  #004C99;
+  --color-accent-light:  #F0F7FF;
+  --color-muted:         #86868B;
+  --color-border:        #D2D2D7;
+  --color-border-dark:   #C7C7CC;
 
   /* Terminal window chrome dots */
-  --color-dot-1: #B0C4F0;
-  --color-dot-2: #7DA4E8;
-  --color-dot-3: #2F6FED;
+  --color-dot-1: #FF5F56;
+  --color-dot-2: #FFBD2E;
+  --color-dot-3: #27C93F;
 
   /* ===== Typography ===== */
-  --font-display: var(--font-space-grotesk), 'Outfit', sans-serif;
-  --font-body:    var(--font-inter), sans-serif;
-  --font-mono:    var(--font-jetbrains-mono), monospace;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  --font-body:    var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* ===== Spacing Scale ===== */
-  --section-py:   5rem;
-  --section-py-lg: 7rem;
+  --section-py:   6rem;
+  --section-py-lg: 8rem;
 }
 
 /* ===== Base Reset ===== */
@@ -116,17 +116,11 @@ code, pre, .font-mono {
    =========================== */
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #5B9EFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-foreground);
 }
 
 .gradient-text-dark {
-  background: linear-gradient(135deg, #05070D 0%, #2F6FED 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-foreground);
 }
 
 /* ===========================
@@ -134,18 +128,21 @@ code, pre, .font-mono {
    =========================== */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 1.5rem;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
 }
 
 .glass-card-dark {
-  background: rgba(5, 7, 13, 0.92);
-  border: 1px solid rgba(47, 111, 237, 0.2);
-  border-radius: 1rem;
-  
+  background: rgba(29, 29, 31, 0.72);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 /* ===========================
@@ -388,10 +385,7 @@ button:focus-visible {
    =========================== */
 
 .bg-grid-pattern {
-  background-image:
-    linear-gradient(to right, rgba(47, 111, 237, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(47, 111, 237, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+  /* Removed for minimal apple-like aesthetic */
 }
 
 /* ===========================
@@ -399,11 +393,7 @@ button:focus-visible {
    =========================== */
 
 .hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.12;
-  pointer-events: none;
+  display: none;
 }
 
 /* ===========================
@@ -422,49 +412,46 @@ button:focus-visible {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   height: 3rem;
   padding: 0 1.75rem;
   background-color: var(--color-accent);
   color: #ffffff;
-  border-radius: 0.7rem;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(47,111,237,0.3);
 }
 .btn-primary:hover {
   background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(47,111,237,0.4);
 }
 
 /* Secondary outline button */
 .btn-outline {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   height: 3rem;
   padding: 0 1.75rem;
   background-color: transparent;
   color: var(--color-foreground);
-  border: 1.5px solid var(--color-border);
-  border-radius: 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 .btn-outline:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background-color: var(--color-accent-light);
+  background-color: var(--color-surface);
 }
 
 /* Accent outline (accent-colored border/text) */
@@ -473,69 +460,67 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  height: 2.875rem;
+  height: 3rem;
   padding: 0 1.75rem;
   background-color: transparent;
   color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
-  border-radius: 0.625rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 .btn-accent-outline:hover {
   background-color: var(--color-accent-light);
-  transform: translateY(-1px);
 }
 
 /* White button (on dark/accent backgrounds) */
 .btn-white {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  height: 3.25rem;
-  padding: 0 2rem;
+  height: 3rem;
+  padding: 0 1.75rem;
   background-color: #ffffff;
-  color: var(--color-accent);
-  border-radius: 0.7rem;
+  color: var(--color-foreground);
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .btn-white:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+  background-color: var(--color-surface);
 }
 
 /* Ghost button on dark backgrounds */
 .btn-ghost-white {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  height: 3.25rem;
-  padding: 0 2rem;
-  background-color: rgba(255,255,255,0.12);
+  height: 3rem;
+  padding: 0 1.75rem;
+  background-color: transparent;
   color: #ffffff;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 0.7rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 .btn-ghost-white:hover {
-  background-color: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.1);
 }
 
 /* Text link with arrow */
@@ -544,14 +529,14 @@ button:focus-visible {
   align-items: center;
   gap: 0.375rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--color-accent);
   text-decoration: none;
-  transition: gap 0.2s;
+  transition: opacity 0.2s;
 }
 .link-arrow:hover {
-  gap: 0.65rem;
+  opacity: 0.8;
 }
 
 /* Service card CTA — recommended variant */
@@ -559,11 +544,11 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.875rem;
-  border-radius: 0.625rem;
+  height: 3rem;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
   background-color: var(--color-accent);
@@ -573,8 +558,6 @@ button:focus-visible {
 }
 .btn-service-recommended:hover {
   background-color: var(--color-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(47,111,237,0.3);
 }
 
 /* Service card CTA — normal variant */
@@ -582,44 +565,43 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.875rem;
-  border-radius: 0.625rem;
+  height: 3rem;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.2s ease;
-  background-color: transparent;
-  color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
+  background-color: var(--color-surface);
+  color: var(--color-foreground);
+  border: none;
   cursor: pointer;
 }
 .btn-service-normal:hover {
-  background-color: var(--color-accent-light);
+  background-color: var(--color-border);
 }
 
 /* Compact primary button */
 .btn-primary-sm {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
+  height: 2.25rem;
+  padding: 0 1rem;
   background-color: var(--color-accent);
   color: #ffffff;
-  border-radius: 0.7rem;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 0.875rem;
   text-decoration: none;
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(47,111,237,0.3);
 }
 .btn-primary-sm:hover {
   background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(47,111,237,0.4);
 }
 
 /* Contact info action link */
@@ -648,4 +630,40 @@ button:focus-visible {
 }
 .back-link:hover {
   gap: 0.7rem;
+}
+
+/* Portfolio grid modern reversal layout */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.portfolio-visual {
+  grid-area: visual;
+}
+
+.portfolio-content {
+  grid-area: content;
+}
+
+@media (min-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .portfolio-grid-even {
+    grid-template-areas: "visual content";
+  }
+  .portfolio-grid-odd {
+    grid-template-areas: "content visual";
+  }
+}
+
+@media (max-width: 991px) {
+  .portfolio-grid {
+    grid-template-areas: 
+      "visual"
+      "content";
+  }
 }

@@ -173,7 +173,7 @@ export default function BlogPage() {
                 {/* Meta */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-muted)' }}>
-                    {new Date(post.date).toLocaleDateString('en-LK', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </span>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-accent)' }}>
                     {post.readTime}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { ProjectType, BudgetRange, Timeline, QuoteWizardState } from '@/types/quote';
-import { ESTIMATE_MAP } from '@/lib/constants';
+import { ESTIMATE_MAP, WHATSAPP_NUMBER } from '@/lib/constants';
 import { submitLead } from '@/lib/api';
 
 const PROJECT_TYPES: { value: ProjectType; icon: string; label: string; desc: string }[] = [
@@ -84,7 +84,7 @@ export default function ProjectEstimator() {
           Check your inbox at <strong>{state.email}</strong>.
         </p>
         <a
-          href={`https://wa.me/94701234567?text=Hi! I just submitted a quote request for a ${state.projectType} project.`}
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I just submitted a quote request for a ${state.projectType} project.`}
           target="_blank"
           rel="noopener noreferrer"
           style={{

@@ -59,21 +59,21 @@ export default function PillarsSection() {
                   position: 'relative',
                   height: '240px',
                   width: '100%',
-                  backgroundColor: 'var(--color-accent-light)',
+                  backgroundColor: 'var(--color-background)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   overflow: 'hidden',
-                  borderBottom: '1px solid var(--color-border)',
+                  borderBottom: '1px solid rgba(0,0,0,0.05)',
                 }}
               >
                 <img
                   src={pillar.image}
                   alt={pillar.title}
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
+                    width: '80%',
+                    height: '80%',
+                    objectFit: 'contain',
                   }}
                 />
               </div>
