@@ -1,31 +1,30 @@
-/* Hallmark · genre: modern-minimal · theme: Midnight-Indigo · macrostructure: Asymmetric Studio · pre-emit critique: P5 H5 E5 S5 R5 V5 */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* Code Vibe · Apple-Level Refined Design System · Editorial Light Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* ===== Hallmark OKLCH Palette — Midnight Anchor (Hue: 255) ===== */
-  --color-paper:        oklch(13.5% 0.010 255);
-  --color-paper-2:      oklch(17.5% 0.012 255);
-  --color-paper-3:      oklch(22.0% 0.015 255);
-  --color-rule:         oklch(26.0% 0.012 255);
-  --color-rule-strong:  oklch(36.0% 0.018 255);
-  --color-ink:          oklch(96.0% 0.005 255);
-  --color-muted:        oklch(68.0% 0.012 255);
-  --color-accent:       oklch(65.0% 0.220 255);
-  --color-accent-hover: oklch(70.0% 0.240 255);
-  --color-focus:        oklch(72.0% 0.200 255);
+  /* ===== Code Vibe Refined Light Palette (85–90% Neutral, 10–15% Accent) ===== */
+  --color-background:     #FFFFFF;
+  --color-foreground:     #111111;
+  --color-secondary:      #6B6B6B;
+  --color-muted:          #999999;
+  --color-border:         #EAEAEA;
+  --color-border-strong:  #D4D4D4;
+  --color-surface:        #F7F7F7;
+  --color-surface-hover:  #EFEFEF;
+  --color-accent:         #1D4ED8;
+  --color-accent-subtle:  #EFF6FF;
 
-  /* Legacy mappings for seamless compatibility */
-  --color-background:   var(--color-paper);
-  --color-surface:      var(--color-paper-2);
-  --color-surface-2:    var(--color-paper-3);
-  --color-surface-dark: oklch(10.5% 0.008 255);
-  --color-foreground:   var(--color-ink);
-  --color-foreground-2: var(--color-muted);
-  --color-border:       var(--color-rule);
-  --color-border-dark:  var(--color-rule-strong);
+  /* Backward Compatibility Aliases */
+  --color-paper:          var(--color-background);
+  --color-paper-2:        var(--color-surface);
+  --color-paper-3:        var(--color-surface-hover);
+  --color-rule:           var(--color-border);
+  --color-rule-strong:    var(--color-border-strong);
+  --color-ink:            var(--color-foreground);
+  --color-surface-dark:   var(--color-surface);
 
-  /* ===== Hallmark Named Spacing Scale (4pt increments) ===== */
+  /* ===== Spacing Scale (4pt increments) ===== */
   --space-3xs: 4px;
   --space-2xs: 8px;
   --space-xs:  12px;
@@ -42,8 +41,8 @@
   --section-py-lg: var(--space-4xl);
 
   /* ===== Typography ===== */
-  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-body:    'Inter', 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* ===== Motion Tokens (Exponential ease-out) ===== */
@@ -53,7 +52,7 @@
   --duration-long:  480ms;
 }
 
-/* ===== Base Reset & Hallmark Responsive Standards ===== */
+/* ===== Base Reset ===== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -64,12 +63,12 @@ html, body {
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -77,13 +76,13 @@ body {
   font-size: 1rem;
 }
 
-/* Hallmark Headings: Roman display face, crisp hierarchy, never italic headers */
+/* Refined Typography Ladder */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-style: normal;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  color: var(--color-ink);
+  color: var(--color-foreground);
   overflow-wrap: anywhere;
   min-width: 0;
 }
@@ -92,7 +91,7 @@ code, pre, .font-mono {
   font-family: var(--font-mono);
 }
 
-/* ===== Reduced Motion Alternative (Hallmark Gate 23) ===== */
+/* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -107,19 +106,19 @@ code, pre, .font-mono {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-paper);
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-rule);
+  background: var(--color-border);
   border-radius: var(--space-3xs);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-rule-strong);
+  background: var(--color-border-strong);
 }
 
 /* ===== Selection ===== */
 ::selection {
-  background: var(--color-accent);
+  background: var(--color-foreground);
   color: #ffffff;
 }
 
@@ -157,65 +156,90 @@ code, pre, .font-mono {
 }
 
 /* ===========================
-   TYPOGRAPHY INTEGRITY (ANTI-AI-SLOP)
-   Bans gradient text on headings. Replaces with crisp, readable solid ink.
+   BUTTON SYSTEM
+   Dark primary button + minimal outline secondary button.
    =========================== */
 
-.gradient-text {
-  color: var(--color-ink);
-  display: inline;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background-color: var(--color-foreground);
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  transition: all var(--duration-short) var(--ease-out);
+  cursor: pointer;
 }
 
-.gradient-text-accent {
-  color: var(--color-accent);
-  display: inline;
+.btn-primary:hover {
+  background-color: #262626;
+  transform: translateY(-1px);
 }
 
-.gradient-text-dark {
-  color: var(--color-ink);
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  transition: all var(--duration-short) var(--ease-out);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-foreground);
+  background-color: var(--color-surface);
+  transform: translateY(-1px);
 }
 
 /* ===========================
-   HALLMARK ELEVATED SURFACES
-   Depth via lightness elevation and hairlines. No colored glow halos.
+   SURFACES & CARDS (LIGHT REFINED)
+   Clean 1px hairlines, subtle elevation, no colored neon glow.
    =========================== */
 
 .glass-card {
-  background: var(--color-paper-2);
-  border: 1px solid var(--color-rule);
-  border-radius: var(--space-md);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
 }
 
 .glass-card:hover {
-  border-color: var(--color-rule-strong);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
 }
 
 .glass-card-dark {
-  background: var(--color-surface-dark);
-  border: 1px solid var(--color-rule);
-  border-radius: var(--space-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
 }
 
-/* ===========================
-   STUDIO CODE / TELEMETRY PANEL
-   Clean 1px hairline border, honest monochrome title, no red/yellow/green chrome
-   =========================== */
-
 .terminal-panel {
-  background: var(--color-paper-2);
-  border: 1px solid var(--color-rule);
-  border-radius: var(--space-sm);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .terminal-topbar {
-  background: var(--color-paper-3);
-  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   padding: var(--space-xs) var(--space-sm);
   display: flex;
   align-items: center;
@@ -225,7 +249,7 @@ code, pre, .font-mono {
 .terminal-title {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-muted);
+  color: var(--color-secondary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -235,6 +259,21 @@ code, pre, .font-mono {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.7;
+  color: var(--color-foreground);
+}
+
+.gradient-text {
+  color: var(--color-foreground);
+  display: inline;
+}
+
+.gradient-text-accent {
+  color: var(--color-accent);
+  display: inline;
+}
+
+.gradient-text-dark {
+  color: var(--color-foreground);
 }
 
 /* ===========================

@@ -1,43 +1,85 @@
 'use client';
 
-import { TRUST_BADGES } from '@/lib/constants';
-import { Star, ShieldCheck, Activity, Code2, MapPin } from 'lucide-react';
+/* Code Vibe · Apple-Level Subtle Credibility Section · Light Editorial */
+import { Check, ShieldCheck, Zap, Code2, Globe } from 'lucide-react';
 
-const ICONS = [
-  <Star key="star" className="w-5 h-5 text-amber-400 fill-amber-400/20" />,
-  <ShieldCheck key="shield" className="w-5 h-5 text-emerald-400" />,
-  <Activity key="activity" className="w-5 h-5 text-cyan-400" />,
-  <Code2 key="code" className="w-5 h-5 text-indigo-400" />,
-  <MapPin key="map" className="w-5 h-5 text-purple-400" />,
+const CREDENTIALS = [
+  {
+    category: 'Architecture',
+    label: 'Next.js 16 & React 19',
+    detail: 'Server components & edge runtime',
+    icon: <Zap className="w-4 h-4 text-[#1D4ED8]" />,
+  },
+  {
+    category: 'Reliability',
+    label: '99.9% Uptime Standard',
+    detail: 'Resilient cloud infrastructure',
+    icon: <ShieldCheck className="w-4 h-4 text-[#111111]" />,
+  },
+  {
+    category: 'Speed',
+    label: '< 800ms Global Load',
+    detail: 'Sub-second response targets',
+    icon: <ActivityIcon className="w-4 h-4 text-[#111111]" />,
+  },
+  {
+    category: 'Code Quality',
+    label: '100% Strict Type Safety',
+    detail: 'Automated CI/CD pipelines',
+    icon: <Code2 className="w-4 h-4 text-[#111111]" />,
+  },
+  {
+    category: 'Global Clients',
+    label: 'Direct Retainer Delivery',
+    detail: 'US, UK, Europe & APAC teams',
+    icon: <Globe className="w-4 h-4 text-[#111111]" />,
+  },
 ];
+
+function ActivityIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...props}>
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+    </svg>
+  );
+}
 
 export default function TrustBadges() {
   return (
-    <section className="relative py-8 border-b border-[var(--color-rule)] bg-[var(--color-paper)]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-          {TRUST_BADGES.map((badge, idx) => (
-            <div
-              key={badge.label}
-              className="rounded-lg p-3.5 sm:p-4 bg-[var(--color-paper-2)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors duration-200 flex items-center gap-3"
-            >
-              {/* Icon */}
-              <div className="w-9 h-9 rounded-md bg-[var(--color-paper-3)] border border-[var(--color-rule)] flex items-center justify-center shrink-0">
-                {ICONS[idx]}
-              </div>
+    <section className="py-16 md:py-20 border-b border-[#EAEAEA] bg-[#FFFFFF]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        
+        {/* Subtle Credibility Headline */}
+        <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4 mb-10 pb-6 border-b border-[#EAEAEA]">
+          <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-[#111111]">
+            Built for businesses that care about the details.
+          </h2>
+          <span className="text-xs font-mono text-[#999999] uppercase tracking-wider">
+            QUALITY BENCHMARKS // 2026
+          </span>
+        </div>
 
-              {/* Text */}
-              <div className="flex flex-col min-w-0">
-                <span className="font-display font-semibold text-sm sm:text-base text-[var(--color-ink)] truncate">
-                  {badge.value}
-                </span>
-                <span className="text-[11px] text-[var(--color-muted)] font-mono truncate">
-                  {badge.sub}
-                </span>
+        {/* 5-Column Quiet Matrix */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {CREDENTIALS.map((item) => (
+            <div
+              key={item.category}
+              className="flex flex-col gap-2 p-4 rounded-lg bg-[#F7F7F7] border border-[#EAEAEA] transition-colors hover:border-[#D4D4D4]"
+            >
+              <div className="flex items-center justify-between text-xs font-mono text-[#999999]">
+                <span>{item.category}</span>
+                {item.icon}
               </div>
+              <span className="font-display text-base font-semibold text-[#111111]">
+                {item.label}
+              </span>
+              <span className="text-xs text-[#6B6B6B] leading-relaxed">
+                {item.detail}
+              </span>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

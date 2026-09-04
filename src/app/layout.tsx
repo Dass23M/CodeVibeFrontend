@@ -73,7 +73,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="antialiased bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-[var(--color-accent)] selection:text-white"
+        className="antialiased bg-[#FFFFFF] text-[#111111] selection:bg-[#111111] selection:text-white"
         style={{ overflowX: 'clip' }}
       >
         <LoadingScreen />

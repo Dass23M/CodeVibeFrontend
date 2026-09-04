@@ -1,12 +1,20 @@
 'use client';
 
+/* Code Vibe · Apple-Level Refined Minimal Navigation */
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS } from '@/lib/constants';
-import { Sparkles, ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
+
+const NAV_ITEMS = [
+  { label: 'Work', href: '/portfolio' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Process', href: '/process' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -14,7 +22,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -23,127 +31,134 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-8 ${
-          scrolled ? 'py-3' : 'py-5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          scrolled
+            ? 'bg-white/90 backdrop-blur-md border-b border-[#EAEAEA] py-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]'
+            : 'bg-white/60 backdrop-blur-xs border-b border-transparent py-5'
         }`}
       >
-        <div
-          className={`max-w-6xl mx-auto rounded-full transition-all duration-200 px-5 md:px-7 py-2 flex items-center justify-between border ${
-            scrolled
-              ? 'bg-[var(--color-paper-2)]/90 backdrop-blur-md border-[var(--color-rule)] shadow-xl'
-              : 'bg-[var(--color-paper-2)]/60 backdrop-blur-sm border-[var(--color-rule)] shadow-none'
-          }`}
-        >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+          
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative overflow-hidden rounded-xl p-1 transition-transform duration-200 group-hover:scale-105">
-              <Image
-                src="/images/logo.png"
-                alt="Code Vibe"
-                width={130}
-                height={40}
-                priority
-                className="h-8 md:h-9 w-auto object-contain brightness-125 contrast-110"
-              />
-            </div>
-            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono text-emerald-400 bg-[var(--color-paper-3)] border border-[var(--color-rule)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>STUDIO ACTIVE</span>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-[#111111] transition-opacity group-hover:opacity-80">
+              Code Vibe
+            </span>
+            <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[var(--color-paper-3)] border border-[var(--color-rule)] px-2 py-1 rounded-full">
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href;
+          {/* Desktop Navigation — Generous Horizontal Spacing */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href));
               return (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3.5 py-1 rounded-full text-xs font-medium transition-colors duration-150 ${
+                  key={item.href}
+                  href={item.href}
+                  className={`text-[13px] tracking-wide transition-colors duration-150 ${
                     isActive
-                      ? 'text-[var(--color-ink)] font-semibold'
-                      : 'text-[var(--color-muted)] hover:text-[var(--color-ink)]'
+                      ? 'text-[#111111] font-semibold'
+                      : 'text-[#6B6B6B] hover:text-[#111111]'
                   }`}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavTab"
-                      className="absolute inset-0 rounded-full bg-[var(--color-paper-2)] border border-[var(--color-rule-strong)]"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
+                  {item.label}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Action CTA & Mobile Trigger */}
-          <div className="flex items-center gap-3">
+          {/* Right Action — "Let's Talk" & Mobile Trigger */}
+          <div className="flex items-center gap-4">
             <Link
               href="/quote"
-              className="hidden sm:inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white shadow-sm transition-colors duration-150"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-md bg-[#111111] hover:bg-[#262626] text-white text-xs font-medium tracking-wide transition-all duration-150 active:scale-[0.98]"
             >
-              <span>Get Estimate</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>Let&apos;s Talk</span>
             </Link>
 
-            {/* Mobile menu hamburger */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle navigation"
-              className="md:hidden p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-ink)] hover:bg-[var(--color-paper-3)] transition-colors"
+              aria-label="Toggle navigation menu"
+              className="md:hidden p-2 rounded-md text-[#111111] hover:bg-[#F7F7F7] transition-colors"
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
+
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Full-Screen Premium Mobile Navigation Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-x-4 top-24 z-40 md:hidden rounded-3xl bg-[#0B0D14]/95 backdrop-blur-2xl border border-white/10 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-white flex flex-col justify-between p-8 sm:p-12 md:hidden pt-28"
           >
-            <nav className="flex flex-col gap-2">
-              {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between transition-colors ${
-                      isActive
-                        ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30'
-                        : 'text-slate-300 hover:bg-white/5'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && <Sparkles className="w-4 h-4 text-indigo-400" />}
-                  </Link>
-                );
-              })}
-              <div className="pt-4 mt-2 border-t border-white/10">
-                <Link
-                  href="/quote"
-                  onClick={() => setMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold text-sm shadow-[0_0_20px_rgba(99,102,241,0.4)]"
-                >
-                  <span>Start Your Project</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+            <div className="flex flex-col gap-6">
+              <span className="text-xs font-mono tracking-widest text-[#999999] uppercase">
+                NAVIGATION
+              </span>
+
+              <nav className="flex flex-col gap-5">
+                {NAV_ITEMS.map((item, idx) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 * idx, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className={`font-display text-3xl sm:text-4xl font-semibold tracking-tight transition-colors flex items-center justify-between ${
+                          isActive ? 'text-[#1D4ED8]' : 'text-[#111111] hover:text-[#6B6B6B]'
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                        <ArrowRight className="w-5 h-5 opacity-40" />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+            </div>
+
+            <div className="pt-8 border-t border-[#EAEAEA] flex flex-col gap-4">
+              <Link
+                href="/quote"
+                onClick={() => setMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-lg bg-[#111111] text-white font-medium text-sm transition-colors"
+              >
+                <span>Start a project</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <div className="flex items-center justify-between text-xs text-[#999999] font-mono">
+                <span>hello@codevibe.lk</span>
+                <span>Colombo, Sri Lanka</span>
               </div>
-            </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
