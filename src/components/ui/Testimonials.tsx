@@ -1,40 +1,42 @@
+'use client';
+
 import { STATIC_TESTIMONIALS } from '@/lib/constants';
+import { Star } from 'lucide-react';
 
 interface Testimonial {
-  _id:        string;
+  _id: string;
   clientName: string;
   clientRole?: string;
-  platform:   'Fiverr' | 'Upwork' | 'Direct' | 'Other';
-  message:    string;
-  rating:     number;
-  avatar?:    string;
+  platform: 'Fiverr' | 'Upwork' | 'Direct' | 'Other';
+  message: string;
+  rating: number;
+  avatar?: string;
 }
 
 interface TestimonialsProps {
   testimonials?: Testimonial[];
-  maxDisplay?:   number;
+  maxDisplay?: number;
 }
 
-const platformColors: Record<string, { bg: string; color: string; label: string }> = {
-  Fiverr: { bg: 'rgba(29,191,115,0.1)', color: '#1dbf73',   label: 'Fiverr' },
-  Upwork: { bg: 'rgba(20,133,90,0.1)',  color: '#14855a',   label: 'Upwork' },
-  Direct: { bg: 'var(--color-accent-light)', color: 'var(--color-accent)', label: 'Direct' },
-  Other:  { bg: 'var(--color-surface)', color: 'var(--color-muted)', label: 'Other' },
+const platformColors: Record<string, { bg: string; color: string; label: string; border: string }> = {
+  Fiverr: { bg: 'rgba(16,185,129,0.12)', color: '#34D399', label: 'Fiverr Pro', border: 'border-emerald-500/20' },
+  Upwork: { bg: 'rgba(6,182,212,0.12)', color: '#22D3EE', label: 'Upwork Top Rated', border: 'border-cyan-500/20' },
+  Direct: { bg: 'rgba(99,102,241,0.15)', color: '#A5B4FC', label: 'Direct Client', border: 'border-indigo-500/20' },
+  Other: { bg: 'rgba(255,255,255,0.06)', color: '#94A3B8', label: 'Verified Review', border: 'border-white/10' },
 };
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div style={{ display: 'flex', gap: '2px' }}>
+    <div className="flex items-center gap-1">
       {[1, 2, 3, 4, 5].map((star) => (
-        <svg
+        <Star
           key={star}
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill={star <= rating ? '#F59E0B' : 'var(--color-border)'}
-        >
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-        </svg>
+          className={`w-4 h-4 ${
+            star <= rating
+              ? 'text-amber-400 fill-amber-400'
+              : 'text-slate-600 fill-transparent'
+          }`}
+        />
       ))}
     </div>
   );
@@ -53,32 +55,19 @@ function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string }) {
       <img
         src={avatarUrl}
         alt={name}
-        width={44}
-        height={44}
-        style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-border)' }}
+        width={42}
+        height={42}
+        className="w-10 h-10 rounded-full object-cover border border-white/20"
       />
     );
   }
 
-  // Generate a deterministic hue from name
-  const hue = name.charCodeAt(0) * 137 % 360;
+  const hue = (name.charCodeAt(0) * 137) % 360;
 
   return (
     <div
-      style={{
-        width:           '44px',
-        height:          '44px',
-        borderRadius:    '50%',
-        background:      `hsl(${hue}, 60%, 55%)`,
-        color:           '#ffffff',
-        display:         'flex',
-        alignItems:      'center',
-        justifyContent:  'center',
-        fontFamily:      'var(--font-display)',
-        fontWeight:      700,
-        fontSize:        '0.9rem',
-        flexShrink:      0,
-      }}
+      className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm text-white shrink-0 shadow-md border border-white/15"
+      style={{ background: `hsl(${hue}, 65%, 45%)` }}
     >
       {initials}
     </div>
@@ -89,70 +78,41 @@ export default function Testimonials({ testimonials, maxDisplay = 6 }: Testimoni
   const items = (testimonials ?? STATIC_TESTIMONIALS).slice(0, maxDisplay) as Testimonial[];
 
   return (
-    <div
-      style={{
-        display:             'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap:                 '1.5rem',
-      }}
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((t) => {
         const plat = platformColors[t.platform] ?? platformColors.Other;
         return (
           <div
             key={t._id}
-            className="card-hover glass-card"
-            style={{
-              padding:       '1.75rem',
-              display:       'flex',
-              flexDirection: 'column',
-              gap:           '1rem',
-            }}
+            className="group relative rounded-3xl p-6 sm:p-7 bg-gradient-to-b from-[#11131C] to-[#0A0B10] border border-white/10 hover:border-indigo-500/40 transition-all duration-300 flex flex-col justify-between gap-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(99,102,241,0.2)] hover:-translate-y-1"
           >
-            {/* Header */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            {/* Header with stars & platform */}
+            <div className="flex items-center justify-between">
               <StarRating rating={t.rating} />
               <span
-                style={{
-                  fontSize:        '0.7rem',
-                  fontFamily:      'var(--font-mono)',
-                  fontWeight:      600,
-                  padding:         '0.2rem 0.6rem',
-                  borderRadius:    '100px',
-                  backgroundColor: plat.bg,
-                  color:           plat.color,
-                  letterSpacing:   '0.05em',
-                }}
+                className={`text-xs font-mono font-medium px-3 py-1 rounded-full border ${plat.border}`}
+                style={{ backgroundColor: plat.bg, color: plat.color }}
               >
                 {plat.label}
               </span>
             </div>
 
-            {/* Quote */}
-            <blockquote
-              style={{
-                margin:     0,
-                padding:    0,
-                fontSize:   '0.925rem',
-                color:      'var(--color-foreground-2)',
-                lineHeight: 1.75,
-                flexGrow:   1,
-              }}
-            >
+            {/* Quote Body */}
+            <blockquote className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal flex-grow italic">
               &ldquo;{t.message}&rdquo;
             </blockquote>
 
-            {/* Client */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', borderTop: '1px solid var(--color-border)', paddingTop: '1rem' }}>
+            {/* Client info footer */}
+            <div className="flex items-center gap-3.5 pt-4 border-t border-white/5">
               <Avatar name={t.clientName} avatarUrl={t.avatar} />
               <div>
-                <p style={{ margin: 0, fontWeight: 600, fontSize: '0.9rem', color: 'var(--color-foreground)', fontFamily: 'var(--font-display)' }}>
+                <div className="font-display font-bold text-sm text-white group-hover:text-indigo-300 transition-colors">
                   {t.clientName}
-                </p>
+                </div>
                 {t.clientRole && (
-                  <p style={{ margin: 0, fontSize: '0.78rem', color: 'var(--color-muted)' }}>
+                  <div className="text-xs text-slate-400 font-mono">
                     {t.clientRole}
-                  </p>
+                  </div>
                 )}
               </div>
             </div>

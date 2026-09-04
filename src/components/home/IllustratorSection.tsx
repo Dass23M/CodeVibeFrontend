@@ -1,203 +1,128 @@
 'use client';
 
 import Link from 'next/link';
-
-/* ── SVG Icon Components ── */
-const IconPalette = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="14" cy="9" r="1.5" fill="currentColor" />
-    <circle cx="9" cy="10.5" r="1.5" fill="currentColor" />
-    <circle cx="10" cy="15" r="1.5" fill="currentColor" />
-    <circle cx="15.5" cy="14" r="1.5" fill="currentColor" />
-  </svg>
-);
-
-const IconBolt = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-
-const IconLayers = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="12 2 2 7 12 12 22 7 12 2" />
-    <polyline points="2 17 12 22 22 17" />
-    <polyline points="2 12 12 17 22 12" />
-  </svg>
-);
-
-const IconBox = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-    <line x1="12" y1="22.08" x2="12" y2="12" />
-  </svg>
-);
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Palette, Zap, Layers, Box, ArrowRight } from 'lucide-react';
 
 const FEATURES = [
   {
-    icon: <IconPalette />,
+    icon: <Palette className="w-5 h-5 text-indigo-400" />,
     title: 'Pixel-Perfect UI/UX',
-    description: 'Every interface is carefully crafted — from color systems and typography to micro-animations and fully responsive layouts.',
+    description: 'Every interaction and screen is crafted with intentional micro-animations, optical balance, and fluid responsiveness.',
+    color: 'from-indigo-500/20 to-indigo-500/5',
+    border: 'group-hover:border-indigo-500/40',
   },
   {
-    icon: <IconBolt />,
-    title: 'Blazing Fast Performance',
-    description: 'Built on Next.js with optimized asset loading, code splitting, and SSR to achieve top Core Web Vitals scores.',
+    icon: <Zap className="w-5 h-5 text-cyan-400" />,
+    title: 'Sub-Second Speeds',
+    description: 'Engineered on Next.js 16 with optimized server components, aggressive edge caching, and perfect 100/100 Core Web Vitals.',
+    color: 'from-cyan-500/20 to-cyan-500/5',
+    border: 'group-hover:border-cyan-500/40',
   },
   {
-    icon: <IconLayers />,
+    icon: <Layers className="w-5 h-5 text-purple-400" />,
     title: 'Scalable Architecture',
-    description: 'Clean, modular code with reusable components, custom hooks, and industry-standard design patterns that grow with your product.',
+    description: 'Clean, type-safe code structures with modular APIs and reusable design patterns that scale seamlessly with your growth.',
+    color: 'from-purple-500/20 to-purple-500/5',
+    border: 'group-hover:border-purple-500/40',
   },
   {
-    icon: <IconBox />,
-    title: 'End-to-End Delivery',
-    description: 'From initial wireframe to production deployment — I handle the full lifecycle so you can focus on your business.',
+    icon: <Box className="w-5 h-5 text-emerald-400" />,
+    title: 'Turnkey Delivery',
+    description: 'Full product lifecycle handling — from interactive wireframes to automated CI/CD cloud deployment.',
+    color: 'from-emerald-500/20 to-emerald-500/5',
+    border: 'group-hover:border-emerald-500/40',
   },
 ];
 
 export default function IllustratorSection() {
   return (
-    <section
-      id="why-code-vibe"
-      style={{
-        paddingTop: '7rem',
-        paddingBottom: '7rem',
-        backgroundColor: 'var(--color-surface)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '5rem',
-            alignItems: 'center',
-          }}
-        >
-          {/* LEFT COLUMN — Illustration */}
-          <div
-            style={{
-              position: 'relative',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              minHeight: '420px',
-              backgroundColor: '#ffffff',
-              borderRadius: '2rem',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.04)',
-              padding: '3rem',
-              overflow: 'hidden',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/hero-illustrator-processed.png"
-              alt="Creative web design and development illustration"
-              style={{
-                width: '100%',
-                maxWidth: '400px',
-                height: 'auto',
-                objectFit: 'contain',
-                display: 'block',
-                position: 'relative',
-                zIndex: 2,
-              }}
-            />
+    <section id="why-code-vibe" className="relative py-28 md:py-36 bg-[#08090D] overflow-hidden">
+      {/* Background glow orb */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Visual Showcase Card on Left */}
+          <div className="lg:col-span-5 relative group">
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent p-6 md:p-8 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              {/* Corner Glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+              
+              <div className="relative w-full aspect-square flex items-center justify-center">
+                <Image
+                  src="/images/hero-illustrator-processed.png"
+                  alt="Creative digital engineering illustration"
+                  width={450}
+                  height={450}
+                  className="w-full h-full object-contain filter drop-shadow-[0_20px_30px_rgba(99,102,241,0.25)] group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Floating Badge */}
+              <div className="mt-4 p-4 rounded-2xl bg-[#0F1117]/80 border border-white/10 backdrop-blur-md flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-mono text-indigo-400">STATUS</div>
+                  <div className="text-sm font-semibold text-white">Production Grade Code</div>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 font-mono text-xs border border-indigo-500/30">
+                  VERIFIED
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* RIGHT COLUMN — Content */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          {/* Features Grid on Right */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
             <div>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.04em',
-                  color: 'var(--color-foreground)',
-                  margin: '0 0 1.25rem 0',
-                }}
-              >
-                Crafted with precision.
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono mb-4">
+                THE CODE VIBE ADVANTAGE
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
+                Engineered with purpose.{' '}
+                <span className="bg-gradient-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">
+                  Designed to inspire.
+                </span>
               </h2>
-              <p
-                style={{
-                  fontSize: '1.125rem',
-                  color: 'var(--color-foreground-2)',
-                  lineHeight: 1.65,
-                  margin: 0,
-                  maxWidth: '480px',
-                }}
-              >
-                I don&apos;t just write code — I build experiences. Every project combines thoughtful design, clean architecture, and optimised performance.
+              <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+                We bridge the gap between creative visual artistry and mission-critical engineering. No boilerplate templates — only tailored, bespoke digital systems built to win.
               </p>
             </div>
 
-            {/* Feature cards as 2x2 grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-              {FEATURES.map((feature, idx) => (
+            {/* 2x2 Feature Bento */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {FEATURES.map((feature) => (
                 <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.75rem',
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-3px)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'; }}
+                  key={feature.title}
+                  className={`group relative rounded-2xl p-5 bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.07] ${feature.border} transition-all duration-300 flex flex-col gap-3 backdrop-blur-md`}
                 >
-                  <div
-                    style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '14px',
-                      backgroundColor: 'var(--color-accent-light)',
-                      color: 'var(--color-accent)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  <div>
-                    <h4 style={{ margin: '0 0 0.35rem 0', fontSize: '1.05rem', fontWeight: 600, color: 'var(--color-foreground)' }}>
-                      {feature.title}
-                    </h4>
-                    <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--color-muted)', lineHeight: 1.55 }}>
-                      {feature.description}
-                    </p>
-                  </div>
+                  <h3 className="font-display font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
 
-            {/* CTA buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.5rem' }}>
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/services" className="btn-primary">
-                Explore Services
+                <span>Explore Services</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/portfolio" className="btn-outline">
-                View Portfolio
+                <span>View Portfolio</span>
               </Link>
             </div>
           </div>
         </div>
-
-        <style>{`
-          @media (max-width: 768px) {
-            #why-code-vibe > div > div {
-              grid-template-columns: 1fr !important;
-            }
-          }
-        `}</style>
       </div>
     </section>
   );

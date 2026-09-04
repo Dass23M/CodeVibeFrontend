@@ -1,32 +1,34 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { SOCIAL_LINKS, EMAIL_ADDRESS, WHATSAPP_NUMBER } from '@/lib/constants';
 import { subscribeBlog } from '@/lib/api';
+import { ArrowRight, Mail, MessageSquare, Check, Sparkles } from 'lucide-react';
 
 const footerLinks = {
   Pages: [
-    { label: 'Home',         href: '/' },
-    { label: 'Services',     href: '/services' },
-    { label: 'Portfolio',    href: '/portfolio' },
-    { label: 'Process',      href: '/process' },
-    { label: 'Blog',         href: '/blog' },
-    { label: 'About',        href: '/about' },
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Process', href: '/process' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'About', href: '/about' },
   ],
   Services: [
-    { label: 'Landing Page',   href: '/services#landing' },
-    { label: 'Portfolio Site', href: '/services#portfolio' },
-    { label: 'Restaurant Web', href: '/services#restaurant' },
-    { label: 'Tourism Web',    href: '/services#tourism' },
-    { label: 'Full Web App',   href: '/services#fullapp' },
-    { label: 'API Integration',href: '/services#api' },
+    { label: 'High-Converting Landing Pages', href: '/services#landing' },
+    { label: 'Interactive Portfolio Platforms', href: '/services#portfolio' },
+    { label: 'Restaurant & Hospitality Systems', href: '/services#restaurant' },
+    { label: 'Tourism & Booking Solutions', href: '/services#tourism' },
+    { label: 'Full-Stack MERN Web Apps', href: '/services#fullapp' },
+    { label: 'Custom REST & GraphQL APIs', href: '/services#api' },
   ],
 };
 
 export default function Footer() {
-  const [email, setEmail]       = useState('');
-  const [status, setStatus]     = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   const year = new Date().getFullYear();
@@ -47,255 +49,171 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      style={{
-        backgroundColor: 'var(--color-surface-dark)',
-        color: '#ffffff',
-        paddingTop: '4rem',
-        paddingBottom: '2rem',
-      }}
-    >
-      <div className="container">
-        {/* ── Top Grid ── */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '3rem',
-            paddingBottom: '3rem',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
-          }}
-        >
-          {/* Brand Column */}
-          <div style={{ maxWidth: '280px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  color: 'var(--color-accent)',
-                  background: 'rgba(47,111,237,0.15)',
-                  padding: '0.2rem 0.5rem',
-                  borderRadius: '0.375rem',
-                }}
-              >
-                {'</>'}
-              </span>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700 }}>
-                Code Vibe
-              </span>
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              Building scalable web apps for startups and businesses using MERN Stack & Next.js.
-              Based in Colombo, Sri Lanka.
+    <footer className="bg-[#050608] text-slate-300 pt-20 pb-12 border-t border-white/10 relative overflow-hidden">
+      {/* Subtle top ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
+          
+          {/* Brand & Studio Info */}
+          <div className="lg:col-span-2 flex flex-col gap-5">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/images/logo.png"
+                alt="Code Vibe"
+                width={140}
+                height={45}
+                className="h-9 w-auto object-contain brightness-125 contrast-110"
+              />
+            </Link>
+            
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+              Elite digital engineering and design studio specializing in Next.js, React, and scalable cloud architectures. We craft standout digital products that elevate brands and captivate users.
             </p>
-            {/* Socials */}
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
+
+            {/* Availability status */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono w-max">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Accepting New Client Inquiries</span>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 pt-2">
               {[
-                { href: SOCIAL_LINKS.github,   label: 'GitHub',   svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg> },
-                { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg> },
-                { href: SOCIAL_LINKS.fiverr,   label: 'Fiverr',   svg: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.004 15.588a.995.995 0 10-1.99 0 .995.995 0 001.99 0zm-4.9-.62a2.78 2.78 0 00-.407.02c.146-.59.22-1.197.22-1.83 0-4.197-3.416-7.613-7.613-7.613S2.69 8.96 2.69 13.158c0 4.196 3.416 7.612 7.614 7.612 2.162 0 4.12-.904 5.53-2.354l-1.42-1.42a5.57 5.57 0 01-4.11 1.785 5.629 5.629 0 01-5.628-5.623 5.629 5.629 0 015.628-5.624 5.629 5.629 0 015.624 5.624c0 .568-.083 1.118-.24 1.638a2.776 2.776 0 00-1.587-.496 2.79 2.79 0 000 5.578 2.785 2.785 0 002.783-2.783v-.077z"/></svg> },
-              ].map(({ href, label, svg }) => (
+                { href: SOCIAL_LINKS.github, label: 'GitHub', icon: 'GH' },
+                { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', icon: 'IN' },
+                { href: SOCIAL_LINKS.fiverr, label: 'Fiverr', icon: 'FI' },
+              ].map(({ href, label, icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    backgroundColor: 'rgba(255,255,255,0.07)',
-                    color: 'rgba(255,255,255,0.6)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    transition: 'all 0.2s ease',
-                    textDecoration: 'none',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.backgroundColor = 'var(--color-accent)';
-                    el.style.color = '#ffffff';
-                    el.style.borderColor = 'var(--color-accent)';
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.backgroundColor = 'rgba(255,255,255,0.07)';
-                    el.style.color = 'rgba(255,255,255,0.6)';
-                    el.style.borderColor = 'rgba(255,255,255,0.1)';
-                  }}
+                  className="w-9 h-9 rounded-xl bg-white/[0.04] hover:bg-indigo-500/20 text-slate-400 hover:text-white border border-white/10 hover:border-indigo-500/40 flex items-center justify-center font-mono text-xs font-bold transition-all duration-200"
                 >
-                  {svg}
+                  {icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Link Columns */}
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading}>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent)',
-                  marginBottom: '1.25rem',
-                }}
-              >
-                {heading}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      style={{
-                        fontSize: '0.875rem',
-                        color: 'rgba(255,255,255,0.55)',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s',
-                      }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff'; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)'; }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          {/* Newsletter Column */}
+          {/* Navigation Links */}
           <div>
-            <h3
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.7rem',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--color-accent)',
-                marginBottom: '1.25rem',
-              }}
-            >
-              Stay Updated
-            </h3>
-            <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', marginBottom: '1rem', lineHeight: 1.7 }}>
-              Dev tips, project updates & tech insights from Sri Lanka's dev community.
+            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4">
+              Navigation
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks.Pages.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services Links */}
+          <div>
+            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4">
+              Services
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks.Services.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter & Contact */}
+          <div>
+            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span>Insights</span>
+              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+            </h4>
+            <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              Join our engineering dispatch. Curated notes on full-stack web architecture, UI craft, and performance.
             </p>
-            <form onSubmit={handleSubscribe}>
-              <div style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
+
+            <form onSubmit={handleSubscribe} className="space-y-2">
+              <div className="relative">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
+                  placeholder="name@company.com"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
                   required
-                  style={{
-                    padding: '0.6rem 0.9rem',
-                    borderRadius: '0.5rem',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    backgroundColor: 'rgba(255,255,255,0.07)',
-                    color: '#ffffff',
-                    fontSize: '0.875rem',
-                    fontFamily: 'var(--font-body)',
-                    outline: 'none',
-                    width: '100%',
-                  }}
                 />
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  style={{
-                    padding: '0.6rem 1rem',
-                    borderRadius: '0.5rem',
-                    backgroundColor: 'var(--color-accent)',
-                    color: '#ffffff',
-                    border: 'none',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    fontFamily: 'var(--font-body)',
-                    cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-                    opacity: status === 'loading' ? 0.7 : 1,
-                    transition: 'background 0.2s',
-                  }}
-                >
-                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-                </button>
               </div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+              >
+                {status === 'loading' ? (
+                  <span>Subscribing...</span>
+                ) : (
+                  <>
+                    <span>Subscribe</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </>
+                )}
+              </button>
               {status === 'success' && (
-                <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#4ade80' }}>
-                  ✓ Subscribed successfully!
+                <p className="text-xs text-emerald-400 flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5" /> Subscribed successfully!
                 </p>
               )}
               {status === 'error' && (
-                <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#f87171' }}>
-                  {errorMsg}
-                </p>
+                <p className="text-xs text-rose-400">{errorMsg}</p>
               )}
             </form>
 
-            {/* Contact info */}
-            <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div className="mt-6 pt-4 border-t border-white/5 flex flex-col gap-2 text-xs text-slate-400">
               <a
                 href={`mailto:${EMAIL_ADDRESS}`}
-                style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
+                className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                {EMAIL_ADDRESS}
+                <Mail className="w-3.5 h-3.5 text-indigo-400" />
+                <span>{EMAIL_ADDRESS}</span>
               </a>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
+                className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                WhatsApp Business
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+                <span>WhatsApp Business</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* ── Bottom Bar ── */}
-        <div
-          style={{
-            paddingTop: '1.5rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
-            © {year} Code Vibe. All rights reserved. Colombo, Sri Lanka.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <Link
-              href="/privacy-policy"
-              style={{
-                fontSize: '0.8rem',
-                color: 'rgba(255,255,255,0.35)',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.35)'; }}
-            >
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+          <p>© {year} Code Vibe. All rights reserved. Colombo, Sri Lanka.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </Link>
-            <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
-            <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
-              Built with{' '}
-              <span style={{ color: 'var(--color-accent)' }}>Next.js</span>
-            </p>
+            <span>•</span>
+            <span className="text-slate-400">
+              Designed &amp; Engineered by Code Vibe
+            </span>
           </div>
         </div>
       </div>

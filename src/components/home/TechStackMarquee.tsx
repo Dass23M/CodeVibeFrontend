@@ -179,60 +179,26 @@ const ROW2 = TECHS.slice(8);
 function TechPill({ tech }: { tech: (typeof TECHS)[0] }) {
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.625rem',
-        padding: '0.6rem 1.1rem',
-        backgroundColor: '#ffffff',
-        border: '1.5px solid #D1DCF5',
-        borderRadius: '50px',
-        flexShrink: 0,
-        transition: 'border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
-        cursor: 'default',
-        userSelect: 'none',
-        boxShadow: '0 1px 3px rgba(47,111,237,0.06)',
-      }}
+      className="group relative flex items-center gap-3 px-4 py-2.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-indigo-500/40 transition-all duration-300 backdrop-blur-md cursor-default shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = tech.color;
-        el.style.boxShadow = `0 4px 16px ${tech.color}22`;
+        el.style.boxShadow = `0 0 25px ${tech.color}33`;
         el.style.transform = 'translateY(-2px)';
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = '#D1DCF5';
-        el.style.boxShadow = '0 1px 3px rgba(47,111,237,0.06)';
+        el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
         el.style.transform = 'translateY(0)';
       }}
     >
       {/* Icon wrapper */}
       <div
-        style={{
-          width: '30px',
-          height: '30px',
-          borderRadius: '8px',
-          backgroundColor: tech.bg,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-          padding: '4px',
-        }}
+        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 p-1 bg-white/[0.06] border border-white/10 group-hover:scale-110 transition-transform duration-200"
       >
         {tech.svg}
       </div>
 
-      <span
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.8rem',
-          fontWeight: 600,
-          color: '#1E293B',
-          whiteSpace: 'nowrap',
-          letterSpacing: '-0.01em',
-        }}
-      >
+      <span className="font-mono text-xs md:text-sm font-semibold text-slate-200 group-hover:text-white whitespace-nowrap">
         {tech.name}
       </span>
     </div>
@@ -244,104 +210,36 @@ export default function TechStackMarquee() {
   const row2 = [...ROW2, ...ROW2, ...ROW2];
 
   return (
-    <section
-      style={{
-        paddingTop: '4rem',
-        paddingBottom: '4rem',
-        backgroundColor: 'var(--color-background)',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
-    >
+    <section className="py-20 bg-[#08090D] overflow-hidden relative border-y border-white/5">
       {/* Header */}
-      <div
-        style={{
-          textAlign: 'center',
-          marginBottom: '2.5rem',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            background: '#EBF1FD',
-            border: '1px solid rgba(47,111,237,0.2)',
-            borderRadius: '100px',
-            padding: '0.3rem 0.9rem',
-            marginBottom: '0.75rem',
-          }}
-        >
-          <span
-            style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
-              backgroundColor: '#2F6FED',
-              flexShrink: 0,
-            }}
-          />
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.68rem',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#2F6FED',
-            }}
-          >
-            Tech Stack
+      <div className="text-center mb-10 relative z-10 container mx-auto px-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-3 shadow-[0_0_15px_rgba(99,102,241,0.15)]">
+          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-indigo-300">
+            TECHNICAL ARSENAL
           </span>
         </div>
 
-        <p
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.25rem, 2.5vw, 1.6rem)',
-            fontWeight: 700,
-            color: '#05070D',
-            margin: 0,
-            letterSpacing: '-0.02em',
-          }}
-        >
-          Built with{' '}
-          <span
-            style={{
-              background: 'linear-gradient(135deg, #2F6FED 0%, #5B9EFF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
+        <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+          Engineered with{' '}
+          <span className="bg-gradient-to-r from-indigo-300 via-white to-cyan-300 bg-clip-text text-transparent">
             industry-leading
           </span>{' '}
-          tools
+          standards
         </p>
       </div>
 
       {/* Marquee wrapper */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative' }}>
-
+      <div className="flex flex-col gap-4 relative">
         {/* Edge fade masks */}
-        {['left', 'right'].map((side) => (
-          <div
-            key={side}
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              [side]: 0,
-              top: 0,
-              bottom: 0,
-              width: '8rem',
-              background: `linear-gradient(to ${side === 'left' ? 'right' : 'left'}, var(--color-background) 0%, transparent 100%)`,
-              zIndex: 2,
-              pointerEvents: 'none',
-            }}
-          />
-        ))}
+        <div
+          aria-hidden="true"
+          className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#08090D] to-transparent z-10 pointer-events-none"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#08090D] to-transparent z-10 pointer-events-none"
+        />
 
         {/* Row 1 — scrolls left */}
         <div style={{ overflow: 'hidden' }}>

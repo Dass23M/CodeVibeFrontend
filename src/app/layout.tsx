@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -8,23 +7,8 @@ import LoadingScreen from '@/components/ui/LoadingScreen';
 import PageTransitionLoader from '@/components/ui/PageTransitionLoader';
 import ChatWidget from '@/components/layout/ChatWidget';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
+import CustomCursor from '@/components/ui/CustomCursor';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
-
-// Body font — paragraphs, general UI text, headings
-const inter = Inter({
-  variable: '--font-inter',
-  subsets:  ['latin'],
-  weight:   ['400', '500', '600', '700'],
-  display:  'swap',
-});
-
-// Mono font — code snippets, eyebrow labels, badges
-const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-jetbrains-mono',
-  subsets:  ['latin'],
-  weight:   ['400', '500', '600'],
-  display:  'swap',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -90,9 +74,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className="antialiased bg-[#08090D] text-slate-100 selection:bg-indigo-500 selection:text-white"
         style={{ overflowX: 'hidden' }}
       >
+        <CustomCursor />
         <LoadingScreen />
         <PageTransitionLoader />
         <Navbar />

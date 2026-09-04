@@ -1,19 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* ===== Color Palette — Premium Apple-Like ===== */
-  --color-background:    #FFFFFF;
-  --color-surface:       #F5F5F7;
-  --color-surface-2:     #EBEBEF;
-  --color-surface-dark:  #1D1D1F;
-  --color-foreground:    #1D1D1F;
-  --color-foreground-2:  #424245;
-  --color-accent:        #0066CC;
-  --color-accent-hover:  #004C99;
-  --color-accent-light:  #F0F7FF;
-  --color-muted:         #86868B;
-  --color-border:        #D2D2D7;
-  --color-border-dark:   #C7C7CC;
+  /* ===== Color Palette — High-End Agency Midnight Obsidian ===== */
+  --color-background:    #08090D;
+  --color-surface:       #0F1117;
+  --color-surface-2:     #171923;
+  --color-surface-dark:  #050608;
+  --color-foreground:    #F8FAFC;
+  --color-foreground-2:  #94A3B8;
+  --color-accent:        #6366F1;
+  --color-accent-hover:  #4F46E5;
+  --color-accent-light:  rgba(99, 102, 241, 0.12);
+  --color-muted:         #64748B;
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-dark:   rgba(255, 255, 255, 0.16);
 
   /* Terminal window chrome dots */
   --color-dot-1: #FF5F56;
@@ -21,13 +22,13 @@
   --color-dot-3: #27C93F;
 
   /* ===== Typography ===== */
-  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-  --font-body:    var(--font-inter), -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-  --font-mono:    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* ===== Spacing Scale ===== */
   --section-py:   6rem;
-  --section-py-lg: 8rem;
+  --section-py-lg: 8.5rem;
 }
 
 /* ===== Base Reset ===== */
@@ -37,6 +38,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -47,12 +49,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;
   font-size: 1rem;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(6, 182, 212, 0.07), transparent);
+  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 code, pre, .font-mono {
@@ -61,14 +67,14 @@ code, pre, .font-mono {
 
 /* ===== Scrollbar Styling ===== */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: #08090D;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-dark);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
@@ -86,7 +92,7 @@ code, pre, .font-mono {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -103,6 +109,7 @@ code, pre, .font-mono {
 .section {
   padding-top: var(--section-py);
   padding-bottom: var(--section-py);
+  position: relative;
 }
 
 @media (min-width: 1024px) {
@@ -113,11 +120,23 @@ code, pre, .font-mono {
 }
 
 /* ===========================
-   GRADIENT TEXT
+   GRADIENT TEXT & SHIMMER
    =========================== */
 
 .gradient-text {
-  color: var(--color-foreground);
+  background: linear-gradient(135deg, #A5B4FC 0%, #FFFFFF 40%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #818CF8 0%, #C084FC 50%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
 }
 
 .gradient-text-dark {
@@ -125,25 +144,32 @@ code, pre, .font-mono {
 }
 
 /* ===========================
-   GLASS CARD
+   GLASS CARD & HOVER GLOW
    =========================== */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(15, 17, 23, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.5rem;
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 16px 40px -10px rgba(99, 102, 241, 0.25);
+  transform: translateY(-4px);
 }
 
 .glass-card-dark {
-  background: rgba(29, 29, 31, 0.72);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(10, 11, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 1.5rem;
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* ===========================
@@ -414,22 +440,27 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  height: 3rem;
-  padding: 0 1.75rem;
-  background-color: var(--color-accent);
+  gap: 0.625rem;
+  height: 3.25rem;
+  padding: 0 2rem;
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
   color: #ffffff;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
   cursor: pointer;
+  letter-spacing: -0.01em;
 }
 .btn-primary:hover {
-  background-color: var(--color-accent-hover);
+  background: linear-gradient(135deg, #818CF8 0%, #6366F1 100%);
+  box-shadow: 0 0 32px rgba(99, 102, 241, 0.65);
+  transform: translateY(-2px);
+  color: #ffffff;
 }
 
 /* Secondary outline button */
@@ -437,22 +468,26 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  height: 3rem;
-  padding: 0 1.75rem;
-  background-color: transparent;
+  gap: 0.625rem;
+  height: 3.25rem;
+  padding: 0 2rem;
+  background: rgba(255, 255, 255, 0.04);
   color: var(--color-foreground);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  backdrop-filter: blur(12px);
 }
 .btn-outline:hover {
-  background-color: var(--color-surface);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+  color: #ffffff;
 }
 
 /* Accent outline (accent-colored border/text) */
