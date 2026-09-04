@@ -1,9 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Palette, Zap, Layers, Box, ArrowRight } from 'lucide-react';
+import { Palette, Zap, Layers, Box, ArrowRight, CheckCircle2, Sparkles, Sliders, ShieldCheck } from 'lucide-react';
 
 const FEATURES = [
   {
@@ -45,32 +43,90 @@ export default function IllustratorSection() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Visual Showcase Card on Left */}
+          {/* Natural Real UI Component Anatomy Inspector on Left (Zero cartoon illustrations) */}
           <div className="lg:col-span-5 relative group">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent p-6 md:p-8 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-              {/* Corner Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-[#12141F] to-[#0A0B12] p-6 md:p-7 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(99,102,241,0.15)] space-y-5">
               
-              <div className="relative w-full aspect-square flex items-center justify-center">
-                <Image
-                  src="/images/hero-illustrator-processed.png"
-                  alt="Creative digital engineering illustration"
-                  width={450}
-                  height={450}
-                  className="w-full h-full object-contain filter drop-shadow-[0_20px_30px_rgba(99,102,241,0.25)] group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Floating Badge */}
-              <div className="mt-4 p-4 rounded-2xl bg-[#0F1117]/80 border border-white/10 backdrop-blur-md flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-mono text-indigo-400">STATUS</div>
-                  <div className="text-sm font-semibold text-white">Production Grade Code</div>
+              {/* Card Header with Design System Beacon */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400">
+                    <Sliders className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white font-mono">DesignSystem.tokens</div>
+                    <div className="text-[10px] text-slate-400 font-mono">Atomic Component Matrix</div>
+                  </div>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 font-mono text-xs border border-indigo-500/30">
-                  VERIFIED
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono font-semibold border border-emerald-500/20">
+                  SYSTEM READY
                 </span>
               </div>
+
+              {/* Real UI Component Element 1: Color Palette Scales */}
+              <div className="space-y-2">
+                <div className="text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                  <span>SEMANTIC COLOR TOKENS</span>
+                  <span className="text-indigo-400">HSL Tailored</span>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { name: 'Indigo 500', hex: '#6366F1', bg: 'bg-[#6366F1]' },
+                    { name: 'Cyan 400', hex: '#22D3EE', bg: 'bg-[#22D3EE]' },
+                    { name: 'Emerald 400', hex: '#34D399', bg: 'bg-[#34D399]' },
+                    { name: 'Obsidian 950', hex: '#08090D', bg: 'bg-[#08090D] border border-white/20' },
+                  ].map((color) => (
+                    <div key={color.name} className="p-2 rounded-xl bg-white/[0.03] border border-white/5 flex flex-col gap-1.5">
+                      <div className={`w-full h-6 rounded-lg ${color.bg} shadow-sm`} />
+                      <div className="text-[10px] font-mono text-white font-medium truncate">{color.name}</div>
+                      <div className="text-[9px] font-mono text-slate-500">{color.hex}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Real UI Component Element 2: Interactive Button & State Inspector */}
+              <div className="space-y-2 pt-1">
+                <div className="text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                  <span>INTERACTIVE ELEMENT STATES</span>
+                  <span className="text-cyan-400">Framer Motion</span>
+                </div>
+                
+                <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-300 font-medium">Spring Magnetic CTA</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-500/20 text-indigo-300">
+                      Hover: scale(1.03)
+                    </span>
+                  </div>
+                  
+                  {/* Real Live Mini Interactive Buttons Showcase */}
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold text-xs text-center shadow-[0_0_15px_rgba(99,102,241,0.4)] border border-white/20">
+                      Primary Action
+                    </div>
+                    <div className="flex-1 py-2 px-3 rounded-xl bg-white/[0.05] border border-white/15 text-slate-200 text-xs font-medium text-center">
+                      Glass Secondary
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Real UI Component Element 3: Verified Performance Score */}
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/20 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                  <div>
+                    <div className="text-xs font-bold text-white font-mono">100% Optical Consistency</div>
+                    <div className="text-[10px] text-slate-400 font-mono">Mobile, Tablet &amp; 4K Display Optimized</div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm font-bold text-emerald-400 font-mono">AAA+</div>
+                  <div className="text-[9px] text-slate-500 font-mono">ACCESSIBLE</div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -87,7 +143,7 @@ export default function IllustratorSection() {
                 </span>
               </h2>
               <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-                We bridge the gap between creative visual artistry and mission-critical engineering. No boilerplate templates — only tailored, bespoke digital systems built to win.
+                We bridge the gap between creative visual artistry and mission-critical engineering. No cartoon placeholders or generic AI templates — only tailored, bespoke digital systems built to win.
               </p>
             </div>
 
