@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
             fontSize:       '1.75rem',
             margin:         '0 auto 1rem',
             boxShadow:      '0 8px 32px rgba(47,111,237,0.35)',
-          }}>⚡</div>
+          }}>{'</>'}</div>
           <h1 style={{ color: '#fff', fontWeight: 800, fontSize: '1.5rem', margin: '0 0 0.25rem', letterSpacing: '-0.025em' }}>
             Code Vibe Admin
           </h1>
@@ -157,7 +157,7 @@ export default function AdminLoginPage() {
                   lineHeight: 1,
                 }}
               >
-                {showPw ? '🙈' : '👁️'}
+                {showPw ? 'Hide' : 'Show'}
               </button>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function AdminLoginPage() {
               alignItems:   'center',
               gap:          '0.5rem',
             }}>
-              ⚠️ {error}
+              {error}
             </div>
           )}
 
@@ -200,11 +200,11 @@ export default function AdminLoginPage() {
               boxShadow:       loading ? 'none' : '0 4px 16px rgba(47,111,237,0.4)',
             }}
           >
-            {loading ? 'Signing in...' : 'Sign In →'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
 
           <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '0.75rem', marginTop: '1.25rem', marginBottom: 0 }}>
-            🔐 Secure admin access · Code Vibe
+            Secure admin access · Code Vibe
           </p>
         </form>
       </div>

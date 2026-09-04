@@ -6,11 +6,11 @@ import { ESTIMATE_MAP, WHATSAPP_NUMBER } from '@/lib/constants';
 import { submitLead } from '@/lib/api';
 
 const PROJECT_TYPES: { value: ProjectType; icon: string; label: string; desc: string }[] = [
-  { value: 'Landing Page',    icon: '🖥️', label: 'Landing Page',     desc: 'Single page, convert visitors' },
-  { value: 'Full Web App',    icon: '⚙️', label: 'Full Web App',      desc: 'MERN / Next.js full-stack' },
-  { value: 'API Integration', icon: '🔌', label: 'API Integration',   desc: 'Connect 3rd-party services' },
-  { value: 'E-commerce',      icon: '🛒', label: 'E-commerce',        desc: 'Online shop with payments' },
-  { value: 'Other',           icon: '💡', label: 'Custom Project',    desc: 'Something unique' },
+  { value: 'Landing Page',    icon: 'LT', label: 'Landing Page',     desc: 'Single page, convert visitors' },
+  { value: 'Full Web App',    icon: 'WA', label: 'Full Web App',      desc: 'MERN / Next.js full-stack' },
+  { value: 'API Integration', icon: 'API', label: 'API Integration',   desc: 'Connect 3rd-party services' },
+  { value: 'E-commerce',      icon: 'EC', label: 'E-commerce',        desc: 'Online shop with payments' },
+  { value: 'Other',           icon: 'OT', label: 'Custom Project',    desc: 'Something unique' },
 ];
 
 const BUDGET_RANGES: { value: BudgetRange; label: string }[] = [
@@ -21,11 +21,11 @@ const BUDGET_RANGES: { value: BudgetRange; label: string }[] = [
 ];
 
 const TIMELINES: { value: Timeline; label: string; icon: string }[] = [
-  { value: '1-2 weeks',   label: '1–2 Weeks',    icon: '⚡' },
-  { value: '1 month',     label: '1 Month',       icon: '📆' },
-  { value: '2-3 months',  label: '2–3 Months',    icon: '🗓️' },
-  { value: '3+ months',   label: '3+ Months',     icon: '🏗️' },
-  { value: 'Flexible',    label: 'Flexible',      icon: '🤝' },
+  { value: '1-2 weeks',   label: '1–2 Weeks',    icon: '1W' },
+  { value: '1 month',     label: '1 Month',       icon: '1M' },
+  { value: '2-3 months',  label: '2–3 Months',    icon: '2M' },
+  { value: '3+ months',   label: '3+ Months',     icon: '3M' },
+  { value: 'Flexible',    label: 'Flexible',      icon: 'FL' },
 ];
 
 const INITIAL_STATE: QuoteWizardState = {
@@ -75,7 +75,11 @@ export default function ProjectEstimator() {
   if (state.submitted) {
     return (
       <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🎉</div>
+        <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--color-accent)' }}>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+        </div>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.875rem', fontWeight: 700, color: 'var(--color-foreground)', margin: '0 0 0.75rem' }}>
           Quote Request Received!
         </h2>
@@ -100,7 +104,7 @@ export default function ProjectEstimator() {
             textDecoration:  'none',
           }}
         >
-          📱 Also message on WhatsApp
+          Also message on WhatsApp
         </a>
       </div>
     );
@@ -167,7 +171,7 @@ export default function ProjectEstimator() {
                       textAlign:       'left',
                     }}
                   >
-                    <span style={{ fontSize: '1.5rem' }}>{pt.icon}</span>
+                    <span style={{ fontSize: '1rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: state.projectType === pt.value ? 'var(--color-accent)' : 'var(--color-muted)' }}>{pt.icon}</span>
                     <div>
                       <p style={{ margin: 0, fontWeight: 600, fontSize: '0.9rem', color: state.projectType === pt.value ? 'var(--color-accent)' : 'var(--color-foreground)' }}>
                         {pt.label}
@@ -269,7 +273,7 @@ export default function ProjectEstimator() {
                       transition:      'all 0.2s',
                     }}
                   >
-                    <div style={{ fontSize: '1.5rem', marginBottom: '0.35rem' }}>{tl.icon}</div>
+                    <div style={{ fontSize: '1rem', fontFamily: 'var(--font-mono)', fontWeight: 700, marginBottom: '0.35rem', color: state.timeline === tl.value ? 'var(--color-accent)' : 'var(--color-muted)' }}>{tl.icon}</div>
                     <p style={{ margin: 0, fontWeight: 600, fontSize: '0.85rem', color: state.timeline === tl.value ? 'var(--color-accent)' : 'var(--color-foreground)' }}>
                       {tl.label}
                     </p>
@@ -356,7 +360,7 @@ export default function ProjectEstimator() {
                   ← Back
                 </button>
                 <button type="submit" disabled={state.loading} style={{ flex: 2, height: '3rem', backgroundColor: 'var(--color-accent)', color: '#ffffff', border: 'none', borderRadius: '0.625rem', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.95rem', cursor: state.loading ? 'not-allowed' : 'pointer', opacity: state.loading ? 0.7 : 1, transition: 'all 0.2s' }}>
-                  {state.loading ? 'Sending...' : '✦ Get My Free Quote'}
+                  {state.loading ? 'Sending...' : 'Get My Free Quote'}
                 </button>
               </div>
             </form>
@@ -390,7 +394,7 @@ export default function ProjectEstimator() {
                 <span style={{ opacity: 0.8 }}>– {formatLKR(estimate.maxPrice)}</span>
               </div>
               <p style={{ opacity: 0.8, fontSize: '0.85rem', margin: '0.35rem 0 0' }}>
-                ⏱ {estimate.minDays}–{estimate.maxDays} business days
+                {estimate.minDays}–{estimate.maxDays} business days
               </p>
             </div>
             <div style={{ padding: '1.5rem' }}>
@@ -408,7 +412,7 @@ export default function ProjectEstimator() {
                 ))}
               </ul>
               <p style={{ marginTop: '1.25rem', fontSize: '0.78rem', color: 'var(--color-muted)', lineHeight: 1.6, padding: '0.75rem', backgroundColor: 'var(--color-surface)', borderRadius: '0.5rem' }}>
-                💡 This is an estimate. Final quote will be confirmed after reviewing your project details.
+                This is an estimate. Final quote will be confirmed after reviewing your project details.
               </p>
             </div>
           </div>
@@ -422,7 +426,11 @@ export default function ProjectEstimator() {
               textAlign:       'center',
             }}
           >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💰</div>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem', color: 'var(--color-muted)' }}>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2" /><path d="M12 12h.01" /><path d="M17 12h.01" /><path d="M7 12h.01" />
+              </svg>
+            </div>
             <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.05rem', color: 'var(--color-foreground)', margin: '0 0 0.5rem' }}>
               Your Estimate Appears Here
             </p>
@@ -435,12 +443,13 @@ export default function ProjectEstimator() {
         {/* Trust points */}
         <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {[
-            '✅ Free quote, no commitment',
-            '⚡ Response within 24 hours',
-            '💰 Fixed pricing in LKR',
-            '📱 Direct WhatsApp access',
+            'Free quote, no commitment',
+            'Response within 24 hours',
+            'Fixed pricing in LKR',
+            'Direct WhatsApp access',
           ].map((item) => (
             <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-foreground-2)' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2.5"><path d="M20 6 9 17l-5-5" /></svg>
               {item}
             </div>
           ))}

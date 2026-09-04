@@ -88,7 +88,7 @@ export default function Footer() {
             </div>
             <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
               Building scalable web apps for startups and businesses using MERN Stack & Next.js.
-              Based in Gampaha, Sri Lanka 🇱🇰
+              Based in Colombo, Sri Lanka.
             </p>
             {/* Socials */}
             <div style={{ display: 'flex', gap: '0.75rem' }}>
@@ -249,7 +249,7 @@ export default function Footer() {
                 href={`mailto:${EMAIL_ADDRESS}`}
                 style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
               >
-                ✉ {EMAIL_ADDRESS}
+                {EMAIL_ADDRESS}
               </a>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -257,7 +257,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
               >
-                📱 WhatsApp Business
+                WhatsApp Business
               </a>
             </div>
           </div>
@@ -275,7 +275,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
-            © {year} Code Vibe. All rights reserved. Gampaha, Sri Lanka 🇱🇰
+            © {year} Code Vibe. All rights reserved. Colombo, Sri Lanka.
           </p>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <Link
@@ -294,7 +294,7 @@ export default function Footer() {
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
             <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
               Built with{' '}
-              <span style={{ color: 'var(--color-accent)' }}>Next.js</span> & ❤️
+              <span style={{ color: 'var(--color-accent)' }}>Next.js</span>
             </p>
           </div>
         </div>

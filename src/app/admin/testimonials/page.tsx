@@ -54,11 +54,11 @@ function TestimonialForm({ initial, onSave, onCancel }: {
         <input type="checkbox" checked={!!form.featured} onChange={(e) => set('featured', e.target.checked)} />
         Feature on homepage
       </label>
-      {error && <p style={{ color: '#FCA5A5', fontSize: '0.84rem', margin: 0 }}>⚠️ {error}</p>}
+      {error && <p style={{ color: '#FCA5A5', fontSize: '0.84rem', margin: 0 }}>{error}</p>}
       <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
         <button type="button" onClick={onCancel} style={{ padding: '0.65rem 1.25rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#E2E8F0', cursor: 'pointer', fontFamily: 'inherit', fontSize: '0.875rem' }}>Cancel</button>
         <button type="submit" disabled={saving} style={{ padding: '0.65rem 1.5rem', background: 'linear-gradient(135deg, #2F6FED, #1A56CC)', border: 'none', borderRadius: '8px', color: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 700, fontSize: '0.875rem' }}>
-          {saving ? 'Saving...' : '💾 Save'}
+          {saving ? 'Saving...' : 'Save'}
         </button>
       </div>
     </form>
@@ -131,8 +131,8 @@ export default function AdminTestimonialsPage() {
             <div style={{ color: '#FCD34D', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{stars(t.rating)}</div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.84rem', lineHeight: 1.65, margin: '0 0 1rem' }}>"{t.message}"</p>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button onClick={() => setEditing(t)} style={{ flex: 1, padding: '0.4rem', background: 'rgba(47,111,237,0.12)', border: '1px solid rgba(47,111,237,0.2)', borderRadius: '6px', color: '#93C5FD', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>✏️ Edit</button>
-              <button onClick={() => handleDelete(t._id)} style={{ flex: 1, padding: '0.4rem', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '6px', color: '#FCA5A5', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>🗑 Delete</button>
+              <button onClick={() => setEditing(t)} style={{ flex: 1, padding: '0.4rem', background: 'rgba(47,111,237,0.12)', border: '1px solid rgba(47,111,237,0.2)', borderRadius: '6px', color: '#93C5FD', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>Edit</button>
+              <button onClick={() => handleDelete(t._id)} style={{ flex: 1, padding: '0.4rem', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '6px', color: '#FCA5A5', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>Delete</button>
             </div>
           </div>
         ))}

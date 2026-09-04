@@ -100,16 +100,16 @@ function LeadDetailPanel({ lead, onClose, onStatusChange }: {
           />
         </div>
         <button onClick={saveNotes} disabled={saving} style={{ width: '100%', height: '2.5rem', background: 'rgba(47,111,237,0.2)', border: '1px solid rgba(47,111,237,0.3)', borderRadius: '8px', color: '#93C5FD', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.875rem' }}>
-          {saving ? 'Saving...' : '💾 Save Notes'}
+          {saving ? 'Saving...' : 'Save Notes'}
         </button>
 
         <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
           <a href={`mailto:${lead.email}?subject=Your Code Vibe Project Quote`} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', height: '2.5rem', background: 'linear-gradient(135deg, #2F6FED, #1A56CC)', border: 'none', borderRadius: '8px', color: '#fff', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none' }}>
-            📧 Reply via Email
+            Reply via Email
           </a>
           {lead.phone && (
             <a href={`https://wa.me/${lead.phone.replace(/\D/g, '')}?text=Hi ${encodeURIComponent(lead.name)}! Thanks for reaching out about your ${encodeURIComponent(lead.projectType)} project.`} target="_blank" rel="noopener noreferrer" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', height: '2.5rem', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '8px', color: '#4ADE80', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none' }}>
-              📱 WhatsApp
+              WhatsApp
             </a>
           )}
         </div>
@@ -197,7 +197,7 @@ export default function AdminLeadsPage() {
         </div>
       </div>
 
-      {error && <div style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '8px', padding: '0.75rem 1rem', color: '#FCA5A5', marginBottom: '1.5rem', fontSize: '0.875rem' }}>⚠️ {error}</div>}
+      {error && <div style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '8px', padding: '0.75rem 1rem', color: '#FCA5A5', marginBottom: '1.5rem', fontSize: '0.875rem' }}>{error}</div>}
 
       <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
@@ -240,7 +240,7 @@ export default function AdminLeadsPage() {
                       {new Date(lead.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                     </td>
                     <td style={{ padding: '0.75rem 1rem' }}>
-                      <button onClick={(e) => { e.stopPropagation(); setDeleteId(lead._id); }} style={{ background: 'none', border: 'none', color: 'rgba(239,68,68,0.5)', cursor: 'pointer', fontSize: '1rem', padding: '0.2rem', lineHeight: 1 }} title="Delete lead">🗑</button>
+                      <button onClick={(e) => { e.stopPropagation(); setDeleteId(lead._id); }} style={{ background: 'none', border: 'none', color: 'rgba(239,68,68,0.5)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, padding: '0.2rem', lineHeight: 1 }} title="Delete lead">Del</button>
                     </td>
                   </tr>
                 );

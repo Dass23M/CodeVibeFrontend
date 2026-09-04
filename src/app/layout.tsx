@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   description:
     'Code Vibe builds scalable web apps for startups and businesses using MERN Stack & Next.js. Hire a professional full-stack developer in Sri Lanka. Get a free quote today.',
   keywords:
-    'hire MERN stack developer Sri Lanka, Next.js developer for hire, freelance full-stack developer Colombo, freelance full-stack developer Gampaha, affordable web development services Sri Lanka',
+    'hire MERN stack developer Sri Lanka, Next.js developer for hire, freelance full-stack developer Colombo, affordable web development services Sri Lanka',
   authors:   [{ name: 'Code Vibe', url: 'https://codevibe.lk' }],
   creator:   'Code Vibe',
   publisher: 'Code Vibe',

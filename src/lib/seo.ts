@@ -28,7 +28,7 @@ export function generatePageMetadata({
     'hire MERN stack developer Sri Lanka',
     'Next.js developer for hire',
     'freelance full-stack developer Colombo',
-    'freelance full-stack developer Gampaha',
+    'freelance full-stack developer Colombo',
     'affordable web development services Sri Lanka',
     'React developer Sri Lanka',
     'Node.js developer Sri Lanka',
@@ -96,14 +96,14 @@ export function localBusinessSchema() {
     telephone: '+94701234567',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Gampaha',
+      addressLocality: 'Colombo',
       addressRegion: 'Western Province',
       addressCountry: 'LK',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '7.0908',
-      longitude: '80.0000',
+      latitude: '6.9271',
+      longitude: '79.8612',
     },
     areaServed: {
       '@type': 'Country',

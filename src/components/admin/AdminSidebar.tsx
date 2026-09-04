@@ -6,12 +6,12 @@ import Link from 'next/link';
 import { logoutAdmin } from '@/lib/adminApi';
 
 const NAV_ITEMS = [
-  { href: '/admin',              icon: '📊', label: 'Dashboard'    },
-  { href: '/admin/leads',        icon: '📬', label: 'Leads'        },
-  { href: '/admin/projects',     icon: '🗂️', label: 'Projects'     },
-  { href: '/admin/testimonials', icon: '⭐', label: 'Testimonials' },
-  { href: '/admin/blog',         icon: '✍️', label: 'Blog Posts'   },
-  { href: '/admin/subscribers',  icon: '📧', label: 'Subscribers'  },
+  { href: '/admin',              icon: 'DB', label: 'Dashboard'    },
+  { href: '/admin/leads',        icon: 'LD', label: 'Leads'        },
+  { href: '/admin/projects',     icon: 'PJ', label: 'Projects'     },
+  { href: '/admin/testimonials', icon: 'TM', label: 'Testimonials' },
+  { href: '/admin/blog',         icon: 'BG', label: 'Blog Posts'   },
+  { href: '/admin/subscribers',  icon: 'SB', label: 'Subscribers'  },
 ];
 
 export default function AdminSidebar() {
@@ -57,7 +57,7 @@ export default function AdminSidebar() {
           justifyContent: 'center',
           flexShrink:   0,
           fontSize:     '16px',
-        }}>⚡</div>
+        }}>{'</>'}</div>
         {!collapsed && (
           <div>
             <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.88rem', letterSpacing: '-0.01em' }}>Code Vibe</div>
@@ -153,7 +153,7 @@ export default function AdminSidebar() {
             (e.currentTarget as HTMLButtonElement).style.borderColor = 'transparent';
           }}
         >
-          <span style={{ fontSize: '1rem', flexShrink: 0 }}>🚪</span>
+          <span style={{ fontSize: '0.75rem', flexShrink: 0, fontFamily: 'var(--font-mono)', fontWeight: 700 }}>{'X'}</span>
           {!collapsed && 'Logout'}
         </button>
       </div>

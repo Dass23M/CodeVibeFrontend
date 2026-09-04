@@ -16,7 +16,7 @@ export const metadata: Metadata = generatePageMetadata({
   keywords: [
     'MERN stack developer Sri Lanka',
     'Next.js freelancer Sri Lanka',
-    'web developer Gampaha',
+    'web developer Colombo',
     'full stack developer hire',
   ],
 });

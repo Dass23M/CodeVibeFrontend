@@ -163,7 +163,7 @@ export default function ServicesPage() {
                       </span>
                     </div>
                     <p style={{ margin: '0.35rem 0 0', fontSize: '0.8rem', color: 'var(--color-muted)', fontFamily: 'var(--font-mono)' }}>
-                      ⏱ {pkg.deliveryDays} delivery
+                      {pkg.deliveryDays} delivery
                     </p>
                   </div>
 

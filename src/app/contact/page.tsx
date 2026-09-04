@@ -143,7 +143,7 @@ export default function ContactPage() {
                 Location
               </p>
               <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-foreground)', margin: '0 0 0.25rem' }}>
-                🇱🇰 Gampaha, Western Province, Sri Lanka
+                Colombo, Western Province, Sri Lanka
               </p>
               <p style={{ fontSize: '0.82rem', color: 'var(--color-muted)', margin: 0 }}>
                 Working hours: Mon–Fri, 9AM–6PM (IST, UTC+5:30)

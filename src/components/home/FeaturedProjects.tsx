@@ -41,12 +41,27 @@ export default function FeaturedProjects() {
                 }}
               >
                 <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-muted)', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-muted)', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>
                     {['FitSync', 'Lost & Found', 'CodeNews.lk'][idx]}
                   </p>
-                  <p style={{ fontSize: '3rem', margin: 0 }}>
-                    {['💪', '🔍', '📰'][idx]}
-                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'center', color: 'var(--color-accent)' }}>
+                    {/* Project SVG Icons */}
+                    {idx === 0 && (
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M6.5 6.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0z" /><path d="M14 14l-4-4" /><path d="M10 17.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0z" />
+                      </svg>
+                    )}
+                    {idx === 1 && (
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      </svg>
+                    )}
+                    {idx === 2 && (
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8" /><path d="M15 18h-5" /><path d="M10 6h8v4h-8V6z" />
+                      </svg>
+                    )}
+                  </div>
                 </div>
 
                 {project.liveUrl && (

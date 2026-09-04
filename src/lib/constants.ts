@@ -37,18 +37,18 @@ export const SOCIAL_LINKS = {
 // ===========================
 
 export const TECH_STACK = [
-  { name: 'React',       icon: '⚛️' },
-  { name: 'Next.js',     icon: '▲' },
-  { name: 'Node.js',     icon: '🟢' },
-  { name: 'MongoDB',     icon: '🍃' },
-  { name: 'Express',     icon: '🚂' },
-  { name: 'TypeScript',  icon: '📘' },
-  { name: 'Tailwind',    icon: '🎨' },
-  { name: 'PostgreSQL',  icon: '🐘' },
-  { name: 'Redis',       icon: '🔴' },
-  { name: 'Docker',      icon: '🐳' },
-  { name: 'AWS',         icon: '☁️' },
-  { name: 'Git',         icon: '🔀' },
+  { name: 'React',       icon: 'R' },
+  { name: 'Next.js',     icon: 'N' },
+  { name: 'Node.js',     icon: 'JS' },
+  { name: 'MongoDB',     icon: 'M' },
+  { name: 'Express',     icon: 'Ex' },
+  { name: 'TypeScript',  icon: 'TS' },
+  { name: 'Tailwind',    icon: 'TW' },
+  { name: 'PostgreSQL',  icon: 'PG' },
+  { name: 'Redis',       icon: 'RD' },
+  { name: 'Docker',      icon: 'DK' },
+  { name: 'AWS',         icon: 'AW' },
+  { name: 'Git',         icon: 'GIT' },
 ] as const;
 
 // ===========================
@@ -175,7 +175,7 @@ export const PROCESS_STEPS = [
     title: 'Discovery Call',
     description:
       'Free 15-min consultation to understand your goals, requirements, and vision. We align on scope, timeline, and success criteria.',
-    icon: '🎯',
+    icon: 'target',
     duration: '15 min',
   },
   {
@@ -183,7 +183,7 @@ export const PROCESS_STEPS = [
     title: 'Proposal & Quote',
     description:
       'Detailed project proposal with scope of work, tech stack, timeline, milestones, and fixed-price LKR quote — no surprises.',
-    icon: '📋',
+    icon: 'clipboard',
     duration: '1–2 days',
   },
   {
@@ -191,7 +191,7 @@ export const PROCESS_STEPS = [
     title: 'Design & Wireframes',
     description:
       'UI/UX wireframes and design mockups for your approval. You see exactly how the product will look before a single line of code is written.',
-    icon: '🎨',
+    icon: 'pen-tool',
     duration: '3–7 days',
   },
   {
@@ -199,7 +199,7 @@ export const PROCESS_STEPS = [
     title: 'Development',
     description:
       'Clean, type-safe code following best practices. Regular progress updates via WhatsApp. Git version control throughout.',
-    icon: '💻',
+    icon: 'code',
     duration: 'Per timeline',
   },
   {
@@ -207,7 +207,7 @@ export const PROCESS_STEPS = [
     title: 'Review & Deploy',
     description:
       'Testing phase → your feedback → revisions → production deployment. Includes SEO setup, performance optimization, and SSL.',
-    icon: '🚀',
+    icon: 'rocket',
     duration: '2–5 days',
   },
   {
@@ -215,7 +215,7 @@ export const PROCESS_STEPS = [
     title: 'Ongoing Support',
     description:
       '30-day post-launch support included. Optional monthly maintenance packages available for updates and monitoring.',
-    icon: '🛡️',
+    icon: 'shield',
     duration: '30+ days',
   },
 ] as const;
@@ -362,5 +362,5 @@ export const TRUST_BADGES = [
   { label: 'Upwork Score',    value: 'Top Rated', sub: 'Job Success 98%' },
   { label: 'Projects Done',   value: '15+',       sub: 'Delivered on time' },
   { label: 'Experience',      value: '3+ Years',  sub: 'MERN & Next.js' },
-  { label: 'Based in',        value: '🇱🇰 SL',     sub: 'Gampaha, Sri Lanka' },
+  { label: 'Based in',        value: 'SL',        sub: 'Colombo, Sri Lanka' },
 ] as const;

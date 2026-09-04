@@ -37,7 +37,7 @@ export default async function ProjectPage({ params }: Props) {
     );
   }
 
-  const icons     = ['💪', '🔍', '📰'];
+  const icons     = ['fitness', 'search', 'news'];
   const idx       = PORTFOLIO_PROJECTS.findIndex((p) => p.slug === slug);
   const gradients = [
     'linear-gradient(135deg, #0f1f3d 0%, #2F6FED 100%)',
@@ -80,9 +80,9 @@ export default async function ProjectPage({ params }: Props) {
           </p>
 
           {[
-            { label: '🎯 The Problem',  content: project.problem },
-            { label: '💡 The Solution', content: project.solution },
-            { label: '📈 The Result',   content: project.result },
+            { label: 'The Problem',  content: project.problem },
+            { label: 'The Solution', content: project.solution },
+            { label: 'The Result',   content: project.result },
           ].map(({ label, content }) => content ? (
             <div key={label} style={{ marginBottom: '2.5rem' }}>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 700, color: 'var(--color-foreground)', margin: '0 0 0.75rem', letterSpacing: '-0.01em' }}>
@@ -94,7 +94,7 @@ export default async function ProjectPage({ params }: Props) {
 
           <div style={{ marginBottom: '2.5rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 700, color: 'var(--color-foreground)', margin: '0 0 1rem', letterSpacing: '-0.01em' }}>
-              🛠 Tech Stack
+              Tech Stack
             </h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {project.techStack.map((t) => <Badge key={t} variant="default">{t}</Badge>)}
@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: Props) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                🔗 View Live Site →
+                View Live Site →
               </a>
             )}
             <Link href="/quote" className="btn-outline">Start a Similar Project</Link>

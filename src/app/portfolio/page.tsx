@@ -78,7 +78,7 @@ export default function PortfolioPage() {
               'linear-gradient(135deg, #0d1f2d 0%, #0ea5e9 100%)',
               'linear-gradient(135deg, #0a0f1e 0%, #4B87F0 100%)',
             ];
-            const icons = ['💪', '🔍', '📰'];
+            const icons = ['fitness', 'search', 'news'];
 
             return (
               <article
@@ -144,9 +144,9 @@ export default function PortfolioPage() {
                   </p>
 
                   {[
-                    { label: '🎯 Problem',  content: project.problem },
-                    { label: '💡 Solution', content: project.solution },
-                    { label: '📈 Result',   content: project.result },
+                    { label: 'The Problem',  content: project.problem },
+                    { label: 'The Solution', content: project.solution },
+                    { label: 'The Result',   content: project.result },
                   ].map(({ label, content }) => content ? (
                     <div key={label}>
                       <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-accent)', letterSpacing: '0.06em', textTransform: 'uppercase', margin: '0 0 0.3rem' }}>

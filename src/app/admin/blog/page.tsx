@@ -45,11 +45,11 @@ function BlogForm({ initial, onSave, onCancel }: {
         <input type="checkbox" checked={!!form.published} onChange={(e) => set('published', e.target.checked)} />
         Publish immediately
       </label>
-      {error && <p style={{ color: '#FCA5A5', fontSize: '0.84rem', margin: 0 }}>⚠️ {error}</p>}
+      {error && <p style={{ color: '#FCA5A5', fontSize: '0.84rem', margin: 0 }}>{error}</p>}
       <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
         <button type="button" onClick={onCancel} style={{ padding: '0.65rem 1.25rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#E2E8F0', cursor: 'pointer', fontFamily: 'inherit', fontSize: '0.875rem' }}>Cancel</button>
         <button type="submit" disabled={saving} style={{ padding: '0.65rem 1.5rem', background: 'linear-gradient(135deg, #2F6FED, #1A56CC)', border: 'none', borderRadius: '8px', color: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 700, fontSize: '0.875rem' }}>
-          {saving ? 'Saving...' : '💾 Save Post'}
+          {saving ? 'Saving...' : 'Save Post'}
         </button>
       </div>
     </form>
@@ -126,10 +126,10 @@ export default function AdminBlogPage() {
             </div>
             <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
               <button onClick={() => togglePublish(post)} style={{ padding: '0.4rem 0.75rem', background: post.published ? 'rgba(107,114,128,0.1)' : 'rgba(16,185,129,0.12)', border: `1px solid ${post.published ? 'rgba(107,114,128,0.2)' : 'rgba(16,185,129,0.2)'}`, borderRadius: '6px', color: post.published ? '#9CA3AF' : '#6EE7B7', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>
-                {post.published ? '⏸ Unpublish' : '▶ Publish'}
+                {post.published ? 'Unpublish' : 'Publish'}
               </button>
-              <button onClick={() => setEditing(post)} style={{ padding: '0.4rem 0.75rem', background: 'rgba(47,111,237,0.12)', border: '1px solid rgba(47,111,237,0.2)', borderRadius: '6px', color: '#93C5FD', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>✏️ Edit</button>
-              <button onClick={() => handleDelete(post._id)} style={{ padding: '0.4rem 0.75rem', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '6px', color: '#FCA5A5', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>🗑</button>
+              <button onClick={() => setEditing(post)} style={{ padding: '0.4rem 0.75rem', background: 'rgba(47,111,237,0.12)', border: '1px solid rgba(47,111,237,0.2)', borderRadius: '6px', color: '#93C5FD', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>Edit</button>
+              <button onClick={() => handleDelete(post._id)} style={{ padding: '0.4rem 0.75rem', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '6px', color: '#FCA5A5', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.78rem' }}>Del</button>
             </div>
           </div>
         ))}

@@ -73,7 +73,7 @@ export default function AdminDashboardPage() {
 
       {error && (
         <div style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '8px', padding: '0.75rem 1rem', color: '#FCA5A5', marginBottom: '1.5rem', fontSize: '0.875rem' }}>
-          ⚠️ {error}
+          {error}
         </div>
       )}
 
@@ -82,11 +82,11 @@ export default function AdminDashboardPage() {
         <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.875rem' }}>Loading stats...</div>
       ) : stats && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
-          <StatCard icon="📬" label="Total Leads"      value={stats.totalLeads}       color="rgba(47,111,237,0.2)"  />
-          <StatCard icon="🆕" label="New This Week"    value={stats.newLeadsThisWeek} color="rgba(59,130,246,0.2)"  sub={`${stats.openLeads} still open`} />
-          <StatCard icon="📧" label="Subscribers"      value={stats.totalSubscribers} color="rgba(16,185,129,0.2)"  />
-          <StatCard icon="🗂️" label="Projects"         value={stats.totalProjects}    color="rgba(139,92,246,0.2)"  />
-          <StatCard icon="⭐" label="Testimonials"     value={stats.totalTestimonials} color="rgba(234,179,8,0.2)"  />
+          <StatCard icon="LD" label="Total Leads"      value={stats.totalLeads}       color="rgba(47,111,237,0.2)"  />
+          <StatCard icon="NW" label="New This Week"    value={stats.newLeadsThisWeek} color="rgba(59,130,246,0.2)"  sub={`${stats.openLeads} still open`} />
+          <StatCard icon="SB" label="Subscribers"      value={stats.totalSubscribers} color="rgba(16,185,129,0.2)"  />
+          <StatCard icon="PJ" label="Projects"         value={stats.totalProjects}    color="rgba(139,92,246,0.2)"  />
+          <StatCard icon="TM" label="Testimonials"     value={stats.totalTestimonials} color="rgba(234,179,8,0.2)"  />
         </div>
       )}
 

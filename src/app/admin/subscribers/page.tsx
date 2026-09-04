@@ -58,12 +58,12 @@ export default function AdminSubscribersPage() {
             style={{ padding: '0.55rem 0.875rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#E2E8F0', fontFamily: 'inherit', fontSize: '0.84rem', outline: 'none', width: '220px' }}
           />
           <button onClick={exportCSV} disabled={subscribers.length === 0} style={{ padding: '0.55rem 1rem', background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '8px', color: '#6EE7B7', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.84rem' }}>
-            ⬇ Export CSV
+            Export CSV
           </button>
         </div>
       </div>
 
-      {error && <div style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '8px', padding: '0.75rem 1rem', color: '#FCA5A5', marginBottom: '1.5rem', fontSize: '0.875rem' }}>⚠️ {error}</div>}
+      {error && <div style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '8px', padding: '0.75rem 1rem', color: '#FCA5A5', marginBottom: '1.5rem', fontSize: '0.875rem' }}>{error}</div>}
 
       <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.84rem' }}>
@@ -87,7 +87,7 @@ export default function AdminSubscribersPage() {
                   {new Date(sub.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                 </td>
                 <td style={{ padding: '0.75rem 1rem' }}>
-                  <button onClick={() => handleDelete(sub._id, sub.email)} style={{ background: 'none', border: 'none', color: 'rgba(239,68,68,0.45)', cursor: 'pointer', fontSize: '1rem', padding: '0.2rem', lineHeight: 1 }} title="Remove subscriber">🗑</button>
+                  <button onClick={() => handleDelete(sub._id, sub.email)} style={{ background: 'none', border: 'none', color: 'rgba(239,68,68,0.45)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, padding: '0.2rem', lineHeight: 1 }} title="Remove subscriber">Del</button>
                 </td>
               </tr>
             ))}

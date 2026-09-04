@@ -11,8 +11,6 @@ export default function CTASection() {
         style={{
           position:       'absolute',
           inset:          0,
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
           pointerEvents:  'none',
         }}
       />
@@ -67,7 +65,7 @@ export default function CTASection() {
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
           <Link href="/quote" className="btn-white">
-            ✦ Start a Project
+            Start a Project
           </Link>
 
           <a
@@ -76,7 +74,7 @@ export default function CTASection() {
             rel="noopener noreferrer"
             className="btn-ghost-white"
           >
-            📅 Book a Free Call
+            Book a Free Call
           </a>
         </div>
 

@@ -5,7 +5,7 @@ import { generatePageMetadata } from '@/lib/seo';
 export const metadata: Metadata = generatePageMetadata({
   title: 'About — Code Vibe Developer',
   description:
-    'Meet Code Vibe — a MERN Stack & Next.js developer based in Gampaha, Sri Lanka. 3+ years building scalable web applications for startups and businesses.',
+    'Meet Code Vibe — a MERN Stack & Next.js developer based in Colombo, Sri Lanka. 3+ years building scalable web applications for startups and businesses.',
   path: '/about',
 });
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
             </h1>
             <p style={{ fontSize: '1.05rem', color: 'var(--color-muted)', lineHeight: 1.9, marginBottom: '1.25rem' }}>
               I&apos;m a self-taught full-stack developer based in{' '}
-              <strong style={{ color: 'var(--color-foreground)' }}>Gampaha, Sri Lanka 🇱🇰</strong>, specializing in
+              <strong style={{ color: 'var(--color-foreground)' }}>Colombo, Sri Lanka</strong>, specializing in
               the MERN stack and Next.js. I build fast, scalable, production-quality web applications
               for startups, businesses, and entrepreneurs.
             </p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               to your business.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem' }}>
-              <Link href="/quote" className="btn-primary">Work With Me →</Link>
+              <Link href="/quote" className="btn-primary">Work With Me</Link>
               <Link href="/portfolio" className="btn-outline">See My Work</Link>
             </div>
           </div>
@@ -105,7 +105,10 @@ export default function AboutPage() {
                 boxShadow:       '0 12px 40px rgba(47,111,237,0.2)',
               }}
             >
-              👨‍💻
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', maxWidth: '340px', margin: '0 auto', width: '100%' }}>

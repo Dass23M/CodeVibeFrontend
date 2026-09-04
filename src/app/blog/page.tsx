@@ -25,7 +25,7 @@ const BLOG_POSTS = [
     tags: ['Hiring', 'MERN Stack', 'Sri Lanka'],
     date: '2025-01-15',
     readTime: '5 min read',
-    emoji: '🔍',
+    iconPath: 'M11 11l8-8M21 3l-8 8M3 21l8-8M13 13l-8 8',
   },
   {
     slug: 'nextjs-vs-react-for-small-business',
@@ -34,7 +34,7 @@ const BLOG_POSTS = [
     tags: ['Next.js', 'React', 'Comparison'],
     date: '2025-01-10',
     readTime: '7 min read',
-    emoji: '⚖️',
+    iconPath: 'M3 6h18M3 12h18M3 18h18',
   },
   {
     slug: 'web-development-cost-sri-lanka-2025',
@@ -43,7 +43,7 @@ const BLOG_POSTS = [
     tags: ['Pricing', 'Sri Lanka', 'Guide'],
     date: '2025-01-05',
     readTime: '6 min read',
-    emoji: '💰',
+    iconPath: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
   },
   {
     slug: 'seo-for-sri-lankan-businesses',
@@ -52,7 +52,7 @@ const BLOG_POSTS = [
     tags: ['SEO', 'Sri Lanka', 'Marketing'],
     date: '2024-12-28',
     readTime: '8 min read',
-    emoji: '📈',
+    iconPath: 'M23 6l-9.5 9.5-5-5L1 18',
   },
   {
     slug: 'mongodb-vs-postgresql-when-to-use',
@@ -61,7 +61,7 @@ const BLOG_POSTS = [
     tags: ['MongoDB', 'PostgreSQL', 'Database'],
     date: '2024-12-20',
     readTime: '6 min read',
-    emoji: '🗄️',
+    iconPath: 'M4 7V4h16v3M9 20h6M12 4v16',
   },
   {
     slug: 'fiverr-upwork-freelancer-tips-sri-lanka',
@@ -70,7 +70,7 @@ const BLOG_POSTS = [
     tags: ['Freelancing', 'Fiverr', 'Upwork'],
     date: '2024-12-15',
     readTime: '9 min read',
-    emoji: '💼',
+    iconPath: 'M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16',
   },
 ];
 
@@ -153,21 +153,22 @@ export default function BlogPage() {
                   gap:           '1rem',
                 }}
               >
-                {/* Emoji icon */}
+                {/* Icon */}
                 <div
                   style={{
                     width:           '52px',
                     height:          '52px',
-                    borderRadius:    '12px',
-                    backgroundColor: 'var(--color-surface)',
+                    borderRadius:    '14px',
+                    backgroundColor: 'var(--color-accent-light)',
                     display:         'flex',
                     alignItems:      'center',
                     justifyContent:  'center',
-                    fontSize:        '1.625rem',
-                    border:          '1px solid var(--color-border)',
+                    color:           'var(--color-accent)',
                   }}
                 >
-                  {post.emoji}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={post.iconPath} />
+                  </svg>
                 </div>
 
                 {/* Meta */}
