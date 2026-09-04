@@ -1,114 +1,153 @@
 'use client';
 
+/* Hallmark · genre: modern-minimal · theme: Midnight-Indigo · macrostructure: Asymmetric Studio · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 import Link from 'next/link';
 import { PORTFOLIO_PROJECTS } from '@/lib/constants';
-import { ArrowUpRight, ExternalLink, Sparkles, FolderGit2 } from 'lucide-react';
+import { ArrowUpRight, FolderGit2, ArrowRight } from 'lucide-react';
 
 export default function FeaturedProjects() {
   const projects = PORTFOLIO_PROJECTS.filter((p) => p.featured).slice(0, 3);
+  const leadProject = projects[0];
+  const sideProjects = projects.slice(1);
 
   return (
-    <section className="py-28 md:py-36 bg-[#08090D] relative overflow-hidden border-t border-white/5">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-500/5 rounded-full blur-[160px] pointer-events-none" />
-
+    <section className="py-20 md:py-28 bg-[var(--color-paper)] relative border-b border-[var(--color-rule)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-indigo-300 text-xs font-mono mb-4 shadow-[0_0_15px_rgba(99,102,241,0.15)]">
-              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              CURATED WORK
+        
+        {/* Asymmetric Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 text-left">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[var(--color-paper-2)] border border-[var(--color-rule)] text-[var(--color-muted)] text-xs font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>CURATED WORK // SHIPPED SYSTEMS</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              Featured{' '}
-              <span className="bg-gradient-to-r from-indigo-300 via-white to-cyan-300 bg-clip-text text-transparent">
-                Case Studies
-              </span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight">
+              Featured Case Studies
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg max-w-xl mt-3">
-              Real commercial products delivering measurable business results for clients worldwide.
+            <p className="text-[var(--color-muted)] text-base sm:text-lg mt-3">
+              Real commercial products delivering measurable results across production environments.
             </p>
           </div>
 
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 self-start md:self-auto px-6 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 hover:border-white/20 transition-all font-medium text-sm"
+            className="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-lg bg-[var(--color-paper-2)] hover:bg-[var(--color-paper-3)] text-[var(--color-ink)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors text-sm font-medium"
           >
             <span>View All Projects</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="w-4 h-4 text-[var(--color-muted)]" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, idx) => (
-            <article
-              key={project.slug}
-              className="group relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#11131C] to-[#0A0B10] border border-white/10 hover:border-indigo-500/50 transition-all duration-500 flex flex-col hover:shadow-[0_20px_50px_rgba(99,102,241,0.2)]"
-            >
-              {/* Project Preview Canvas */}
-              <div className="relative h-60 w-full bg-[#0D0F17] flex items-center justify-center overflow-hidden border-b border-white/5">
-                {/* Visual Ambient Glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 via-transparent to-cyan-500/10 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Project Monogram & Tech Icon */}
-                <div className="text-center relative z-10 transition-transform duration-500 group-hover:scale-110">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center mx-auto mb-3 shadow-[0_10px_25px_rgba(0,0,0,0.5)] group-hover:border-indigo-500/40">
-                    <FolderGit2 className="w-8 h-8 text-indigo-400 group-hover:text-cyan-300 transition-colors" />
+        {/* Asymmetric Cadence: Lead Project (7 cols) + Companion Stack (5 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          
+          {/* Lead Project Spotlight Card (7 cols) */}
+          {leadProject && (
+            <article className="lg:col-span-7 rounded-xl overflow-hidden bg-[var(--color-paper-2)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors duration-200 flex flex-col justify-between p-6 sm:p-8">
+              <div>
+                <div className="flex items-center justify-between pb-6 border-b border-[var(--color-rule)] mb-6">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-md bg-[var(--color-paper-3)] border border-[var(--color-rule)] flex items-center justify-center">
+                      <FolderGit2 className="w-4 h-4 text-[var(--color-accent)]" />
+                    </div>
+                    <span className="font-mono text-xs text-[var(--color-muted)] uppercase tracking-wider">
+                      SPOTLIGHT PRODUCTION
+                    </span>
                   </div>
-                  <span className="font-mono text-xs tracking-widest uppercase text-slate-400 font-semibold">
-                    {project.title}
-                  </span>
+                  {leadProject.liveUrl && (
+                    <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono text-emerald-400 bg-[var(--color-paper-3)] border border-[var(--color-rule)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      LIVE SYSTEM
+                    </span>
+                  )}
                 </div>
 
-                {/* Live Beacon Badge */}
-                {project.liveUrl && (
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-md">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-                    <span className="font-mono text-[11px] font-semibold text-emerald-400">Live Production</span>
-                  </div>
-                )}
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-3">
+                  {leadProject.title}
+                </h3>
+                <p className="text-[var(--color-muted)] text-base leading-relaxed mb-6">
+                  {leadProject.summary}
+                </p>
+
+                {/* Tech Badges */}
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {leadProject.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs font-mono px-2.5 py-1 rounded bg-[var(--color-paper-3)] text-[var(--color-muted)] border border-[var(--color-rule)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 md:p-8 flex flex-col flex-grow justify-between gap-6">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-white group-hover:text-indigo-300 transition-colors mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">
-                    {project.summary}
-                  </p>
-                </div>
+              <div className="pt-6 border-t border-[var(--color-rule)] flex items-center justify-between">
+                <span className="text-xs font-mono text-[var(--color-muted)]">
+                  CATEGORY: FULL-STACK WEB APPLICATION
+                </span>
+                <Link
+                  href={`/portfolio#${leadProject.slug}`}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
+                >
+                  <span>Read Case Study</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </article>
+          )}
 
-                {/* Tech Stack & Link */}
-                <div className="space-y-4 pt-4 border-t border-white/5">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.techStack.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/5"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <span className="text-xs font-mono px-2 py-0.5 rounded-md bg-white/[0.02] text-slate-500 border border-white/5">
-                        +{project.techStack.length - 3}
+          {/* Companion Stacked Projects (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {sideProjects.map((project) => (
+              <article
+                key={project.slug}
+                className="rounded-xl p-6 bg-[var(--color-paper-2)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors duration-200 flex flex-col justify-between flex-1"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-[var(--color-muted)] uppercase">
+                      CASE SPEC // {project.slug}
+                    </span>
+                    {project.liveUrl && (
+                      <span className="text-[11px] font-mono text-emerald-400">
+                        Operational
                       </span>
                     )}
                   </div>
 
+                  <h4 className="font-display text-xl font-bold text-[var(--color-ink)] mb-2">
+                    {project.title}
+                  </h4>
+                  <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-4 line-clamp-2">
+                    {project.summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.techStack.slice(0, 3).map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--color-paper-3)] text-[var(--color-muted)] border border-[var(--color-rule)]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[var(--color-rule)]">
                   <Link
                     href={`/portfolio#${project.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 group-hover:text-indigo-300 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
                   >
-                    <span>Read Case Study</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span>Inspect Architecture</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

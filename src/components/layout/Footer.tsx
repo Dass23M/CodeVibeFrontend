@@ -49,15 +49,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#050608] text-slate-300 pt-20 pb-12 border-t border-white/10 relative overflow-hidden">
-      {/* Subtle top ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-
+    <footer className="bg-[var(--color-paper)] text-[var(--color-muted)] pt-16 pb-12 border-t border-[var(--color-rule)] relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[var(--color-rule)]">
           
           {/* Brand & Studio Info */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          <div className="lg:col-span-2 flex flex-col gap-5 text-left">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/images/logo.png"
@@ -68,18 +65,18 @@ export default function Footer() {
               />
             </Link>
             
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Elite digital engineering and design studio specializing in Next.js, React, and scalable cloud architectures. We craft standout digital products that elevate brands and captivate users.
+            <p className="text-sm text-[var(--color-muted)] leading-relaxed max-w-sm">
+              Independent software studio engineering bespoke web platforms, Next.js full-stack applications, and resilient digital products for startups and enterprises.
             </p>
 
             {/* Availability status */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono w-max">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Accepting New Client Inquiries</span>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded text-[11px] font-mono text-emerald-400 bg-[var(--color-paper-2)] border border-[var(--color-rule)] w-max">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span>Accepting New Client Sprints</span>
             </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-2 pt-2">
               {[
                 { href: SOCIAL_LINKS.github, label: 'GitHub', icon: 'GH' },
                 { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', icon: 'IN' },
@@ -91,7 +88,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/[0.04] hover:bg-indigo-500/20 text-slate-400 hover:text-white border border-white/10 hover:border-indigo-500/40 flex items-center justify-center font-mono text-xs font-bold transition-all duration-200"
+                  className="w-8 h-8 rounded-md bg-[var(--color-paper-2)] hover:bg-[var(--color-paper-3)] text-[var(--color-muted)] hover:text-[var(--color-ink)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] flex items-center justify-center font-mono text-xs font-semibold transition-colors duration-150"
                 >
                   {icon}
                 </a>
@@ -100,8 +97,8 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div>
-            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4">
+          <div className="text-left">
+            <h4 className="font-mono text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-4">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -109,7 +106,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                    className="text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -118,9 +115,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services Links */}
-          <div>
-            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4">
+          {/* Capabilities */}
+          <div className="text-left">
+            <h4 className="font-mono text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-4">
               Services
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -128,7 +125,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                    className="text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -138,43 +135,42 @@ export default function Footer() {
           </div>
 
           {/* Newsletter & Contact */}
-          <div>
-            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span>Insights</span>
-              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+          <div className="text-left">
+            <h4 className="font-mono text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-4">
+              Engineering Dispatch
             </h4>
-            <p className="text-xs text-slate-400 leading-relaxed mb-4">
-              Join our engineering dispatch. Curated notes on full-stack web architecture, UI craft, and performance.
+            <p className="text-xs text-[var(--color-muted)] leading-relaxed mb-4">
+              Technical memos on Next.js architecture, state design, and web vitals optimization.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2">
-              <div className="relative">
+              <div>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                  className="w-full px-3 py-2 rounded-md bg-[var(--color-paper-2)] border border-[var(--color-rule)] text-xs text-[var(--color-ink)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--color-focus)] transition-colors"
                   required
                 />
               </div>
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+                className="w-full py-2 px-4 rounded-md bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white text-xs font-medium flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
               >
                 {status === 'loading' ? (
                   <span>Subscribing...</span>
                 ) : (
                   <>
-                    <span>Subscribe</span>
+                    <span>Subscribe to Dispatch</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>
               {status === 'success' && (
                 <p className="text-xs text-emerald-400 flex items-center gap-1">
-                  <Check className="w-3.5 h-3.5" /> Subscribed successfully!
+                  <Check className="w-3.5 h-3.5" /> Subscribed successfully.
                 </p>
               )}
               {status === 'error' && (
@@ -182,37 +178,37 @@ export default function Footer() {
               )}
             </form>
 
-            <div className="mt-6 pt-4 border-t border-white/5 flex flex-col gap-2 text-xs text-slate-400">
+            <div className="mt-5 pt-4 border-t border-[var(--color-rule)] flex flex-col gap-2 text-xs font-mono text-[var(--color-muted)]">
               <a
                 href={`mailto:${EMAIL_ADDRESS}`}
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-[var(--color-ink)] transition-colors"
               >
-                <Mail className="w-3.5 h-3.5 text-indigo-400" />
-                <span>{EMAIL_ADDRESS}</span>
+                <Mail className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+                <span className="truncate">{EMAIL_ADDRESS}</span>
               </a>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 hover:text-[var(--color-ink)] transition-colors"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                <span>WhatsApp Business</span>
+                <span>WhatsApp Available</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
-          <p>© {year} Code Vibe. All rights reserved. Colombo, Sri Lanka.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)] font-mono">
+          <p>© {year} Code Vibe. All rights reserved. Independent Digital Studio.</p>
           <div className="flex items-center gap-4">
-            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[var(--color-ink)] transition-colors">
               Privacy Policy
             </Link>
             <span>•</span>
-            <span className="text-slate-400">
-              Designed &amp; Engineered by Code Vibe
+            <span className="text-[var(--color-muted)]">
+              Engineered with Next.js 16
             </span>
           </div>
         </div>

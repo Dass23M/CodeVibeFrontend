@@ -13,25 +13,25 @@ const ICONS = [
 
 export default function TrustBadges() {
   return (
-    <section className="relative py-12 border-y border-white/5 bg-[#0A0B10]">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+    <section className="relative py-8 border-b border-[var(--color-rule)] bg-[var(--color-paper)]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
           {TRUST_BADGES.map((badge, idx) => (
             <div
               key={badge.label}
-              className="group relative rounded-2xl p-4 md:p-5 bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 backdrop-blur-md flex items-center gap-3.5"
+              className="rounded-lg p-3.5 sm:p-4 bg-[var(--color-paper-2)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors duration-200 flex items-center gap-3"
             >
               {/* Icon */}
-              <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-indigo-500/40 transition-all duration-300">
+              <div className="w-9 h-9 rounded-md bg-[var(--color-paper-3)] border border-[var(--color-rule)] flex items-center justify-center shrink-0">
                 {ICONS[idx]}
               </div>
 
               {/* Text */}
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-base md:text-lg text-white group-hover:text-indigo-300 transition-colors">
+              <div className="flex flex-col min-w-0">
+                <span className="font-display font-semibold text-sm sm:text-base text-[var(--color-ink)] truncate">
                   {badge.value}
                 </span>
-                <span className="text-xs text-slate-400 font-mono">
+                <span className="text-[11px] text-[var(--color-muted)] font-mono truncate">
                   {badge.sub}
                 </span>
               </div>

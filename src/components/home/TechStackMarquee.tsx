@@ -179,26 +179,16 @@ const ROW2 = TECHS.slice(8);
 function TechPill({ tech }: { tech: (typeof TECHS)[0] }) {
   return (
     <div
-      className="group relative flex items-center gap-3 px-4 py-2.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-indigo-500/40 transition-all duration-300 backdrop-blur-md cursor-default shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.boxShadow = `0 0 25px ${tech.color}33`;
-        el.style.transform = 'translateY(-2px)';
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
-        el.style.transform = 'translateY(0)';
-      }}
+      className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[var(--color-paper-2)] hover:bg-[var(--color-paper-3)] border border-[var(--color-rule)] hover:border-[var(--color-rule-strong)] transition-colors duration-200 cursor-default shrink-0 shadow-sm"
     >
       {/* Icon wrapper */}
       <div
-        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 p-1 bg-white/[0.06] border border-white/10 group-hover:scale-110 transition-transform duration-200"
+        className="w-6 h-6 rounded flex items-center justify-center shrink-0 p-0.5 bg-[var(--color-paper)] border border-[var(--color-rule)]"
       >
         {tech.svg}
       </div>
 
-      <span className="font-mono text-xs md:text-sm font-semibold text-slate-200 group-hover:text-white whitespace-nowrap">
+      <span className="font-mono text-xs font-medium text-[var(--color-ink)] whitespace-nowrap">
         {tech.name}
       </span>
     </div>
@@ -210,35 +200,29 @@ export default function TechStackMarquee() {
   const row2 = [...ROW2, ...ROW2, ...ROW2];
 
   return (
-    <section className="py-20 bg-[#08090D] overflow-hidden relative border-y border-white/5">
+    <section className="py-16 bg-[var(--color-paper)] overflow-hidden relative border-b border-[var(--color-rule)]">
       {/* Header */}
-      <div className="text-center mb-10 relative z-10 container mx-auto px-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-3 shadow-[0_0_15px_rgba(99,102,241,0.15)]">
-          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-indigo-300">
-            TECHNICAL ARSENAL
-          </span>
+      <div className="text-left mb-8 relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[var(--color-paper-2)] border border-[var(--color-rule)] mb-3 text-xs font-mono tracking-wider text-[var(--color-muted)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>TECHNICAL ARSENAL // CORE RUNTIMES</span>
         </div>
 
-        <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-          Engineered with{' '}
-          <span className="bg-gradient-to-r from-indigo-300 via-white to-cyan-300 bg-clip-text text-transparent">
-            industry-leading
-          </span>{' '}
-          standards
+        <p className="font-display text-2xl sm:text-3xl font-bold text-[var(--color-ink)] tracking-tight">
+          Engineered with modern production standards.
         </p>
       </div>
 
       {/* Marquee wrapper */}
-      <div className="flex flex-col gap-4 relative">
+      <div className="flex flex-col gap-3 relative">
         {/* Edge fade masks */}
         <div
           aria-hidden="true"
-          className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#08090D] to-transparent z-10 pointer-events-none"
+          className="absolute left-0 top-0 bottom-0 w-20 md:w-36 bg-gradient-to-r from-[var(--color-paper)] to-transparent z-10 pointer-events-none"
         />
         <div
           aria-hidden="true"
-          className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#08090D] to-transparent z-10 pointer-events-none"
+          className="absolute right-0 top-0 bottom-0 w-20 md:w-36 bg-gradient-to-l from-[var(--color-paper)] to-transparent z-10 pointer-events-none"
         />
 
         {/* Row 1 — scrolls left */}

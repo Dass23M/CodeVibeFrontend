@@ -1,39 +1,65 @@
+/* Hallmark · genre: modern-minimal · theme: Midnight-Indigo · macrostructure: Asymmetric Studio · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  /* ===== Color Palette — High-End Agency Midnight Obsidian ===== */
-  --color-background:    #08090D;
-  --color-surface:       #0F1117;
-  --color-surface-2:     #171923;
-  --color-surface-dark:  #050608;
-  --color-foreground:    #F8FAFC;
-  --color-foreground-2:  #94A3B8;
-  --color-accent:        #6366F1;
-  --color-accent-hover:  #4F46E5;
-  --color-accent-light:  rgba(99, 102, 241, 0.12);
-  --color-muted:         #64748B;
-  --color-border:        rgba(255, 255, 255, 0.08);
-  --color-border-dark:   rgba(255, 255, 255, 0.16);
+:root {
+  /* ===== Hallmark OKLCH Palette — Midnight Anchor (Hue: 255) ===== */
+  --color-paper:        oklch(13.5% 0.010 255);
+  --color-paper-2:      oklch(17.5% 0.012 255);
+  --color-paper-3:      oklch(22.0% 0.015 255);
+  --color-rule:         oklch(26.0% 0.012 255);
+  --color-rule-strong:  oklch(36.0% 0.018 255);
+  --color-ink:          oklch(96.0% 0.005 255);
+  --color-muted:        oklch(68.0% 0.012 255);
+  --color-accent:       oklch(65.0% 0.220 255);
+  --color-accent-hover: oklch(70.0% 0.240 255);
+  --color-focus:        oklch(72.0% 0.200 255);
 
-  /* Terminal window chrome dots */
-  --color-dot-1: #FF5F56;
-  --color-dot-2: #FFBD2E;
-  --color-dot-3: #27C93F;
+  /* Legacy mappings for seamless compatibility */
+  --color-background:   var(--color-paper);
+  --color-surface:      var(--color-paper-2);
+  --color-surface-2:    var(--color-paper-3);
+  --color-surface-dark: oklch(10.5% 0.008 255);
+  --color-foreground:   var(--color-ink);
+  --color-foreground-2: var(--color-muted);
+  --color-border:       var(--color-rule);
+  --color-border-dark:  var(--color-rule-strong);
+
+  /* ===== Hallmark Named Spacing Scale (4pt increments) ===== */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs:  12px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  32px;
+  --space-xl:  48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+
+  /* Section Spacing */
+  --section-py:    var(--space-3xl);
+  --section-py-lg: var(--space-4xl);
 
   /* ===== Typography ===== */
-  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  /* ===== Spacing Scale ===== */
-  --section-py:   6rem;
-  --section-py-lg: 8.5rem;
+  /* ===== Motion Tokens (Exponential ease-out) ===== */
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-short: 180ms;
+  --duration-base:  280ms;
+  --duration-long:  480ms;
 }
 
-/* ===== Base Reset ===== */
+/* ===== Base Reset & Hallmark Responsive Standards ===== */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: clip;
 }
 
 html {
@@ -42,42 +68,53 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.7;
+  line-height: 1.65;
   font-size: 1rem;
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
-    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(6, 182, 212, 0.07), transparent);
-  background-attachment: fixed;
 }
 
+/* Hallmark Headings: Roman display face, crisp hierarchy, never italic headers */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+  font-style: normal;
   line-height: 1.15;
   letter-spacing: -0.025em;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 code, pre, .font-mono {
   font-family: var(--font-mono);
 }
 
+/* ===== Reduced Motion Alternative (Hallmark Gate 23) ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ===== Scrollbar Styling ===== */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090D;
+  background: var(--color-paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  background: var(--color-rule);
+  border-radius: var(--space-3xs);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: var(--color-rule-strong);
 }
 
 /* ===== Selection ===== */
@@ -95,14 +132,14 @@ code, pre, .font-mono {
   max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 
 @media (min-width: 768px) {
   .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
   }
 }
 
@@ -120,106 +157,84 @@ code, pre, .font-mono {
 }
 
 /* ===========================
-   GRADIENT TEXT & SHIMMER
+   TYPOGRAPHY INTEGRITY (ANTI-AI-SLOP)
+   Bans gradient text on headings. Replaces with crisp, readable solid ink.
    =========================== */
 
 .gradient-text {
-  background: linear-gradient(135deg, #A5B4FC 0%, #FFFFFF 40%, #38BDF8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
+  color: var(--color-ink);
+  display: inline;
 }
 
 .gradient-text-accent {
-  background: linear-gradient(135deg, #818CF8 0%, #C084FC 50%, #38BDF8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
+  color: var(--color-accent);
+  display: inline;
 }
 
 .gradient-text-dark {
-  color: var(--color-foreground);
+  color: var(--color-ink);
 }
 
 /* ===========================
-   GLASS CARD & HOVER GLOW
+   HALLMARK ELEVATED SURFACES
+   Depth via lightness elevation and hairlines. No colored glow halos.
    =========================== */
 
 .glass-card {
-  background: rgba(15, 17, 23, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.5rem;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.35);
-  box-shadow: 0 16px 40px -10px rgba(99, 102, 241, 0.25);
-  transform: translateY(-4px);
+  border-color: var(--color-rule-strong);
+  transform: translateY(-2px);
 }
 
 .glass-card-dark {
-  background: rgba(10, 11, 16, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 1.5rem;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  background: var(--color-surface-dark);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--space-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 /* ===========================
-   TERMINAL PANEL
+   STUDIO CODE / TELEMETRY PANEL
+   Clean 1px hairline border, honest monochrome title, no red/yellow/green chrome
    =========================== */
 
 .terminal-panel {
-  background: #0B0D17;
-  border: 1px solid rgba(47, 111, 237, 0.25);
-  border-radius: 0.875rem;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--space-sm);
   overflow: hidden;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 20px 40px -12px rgba(47, 111, 237, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 .terminal-topbar {
-  background: #131520;
-  border-bottom: 1px solid rgba(47, 111, 237, 0.15);
-  padding: 0.75rem 1rem;
+  background: var(--color-paper-3);
+  border-bottom: 1px solid var(--color-rule);
+  padding: var(--space-xs) var(--space-sm);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2xs);
 }
-
-.terminal-dot {
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
-}
-
-.terminal-dot-1 { background: var(--color-dot-1); }
-.terminal-dot-2 { background: var(--color-dot-2); }
-.terminal-dot-3 { background: var(--color-dot-3); }
 
 .terminal-title {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.35);
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 0.75rem;
+  color: var(--color-muted);
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .terminal-body {
-  padding: 1.25rem 1.5rem;
+  padding: var(--space-md);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* ===========================

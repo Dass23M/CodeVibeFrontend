@@ -31,15 +31,15 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`max-w-6xl mx-auto rounded-full transition-all duration-300 px-5 md:px-7 py-2.5 flex items-center justify-between border ${
+          className={`max-w-6xl mx-auto rounded-full transition-all duration-200 px-5 md:px-7 py-2 flex items-center justify-between border ${
             scrolled
-              ? 'bg-[#0B0D14]/80 backdrop-blur-xl border-white/10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8),0_0_20px_rgba(99,102,241,0.15)]'
-              : 'bg-[#0B0D14]/40 backdrop-blur-md border-white/5 shadow-none'
+              ? 'bg-[var(--color-paper-2)]/90 backdrop-blur-md border-[var(--color-rule)] shadow-xl'
+              : 'bg-[var(--color-paper-2)]/60 backdrop-blur-sm border-[var(--color-rule)] shadow-none'
           }`}
         >
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative overflow-hidden rounded-xl p-1.5 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative overflow-hidden rounded-xl p-1 transition-transform duration-200 group-hover:scale-105">
               <Image
                 src="/images/logo.png"
                 alt="Code Vibe"
@@ -49,34 +49,31 @@ export default function Navbar() {
                 className="h-8 md:h-9 w-auto object-contain brightness-125 contrast-110"
               />
             </div>
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>Available</span>
+            <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono text-emerald-400 bg-[var(--color-paper-3)] border border-[var(--color-rule)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>STUDIO ACTIVE</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 rounded-full">
+          <nav className="hidden md:flex items-center gap-1 bg-[var(--color-paper-3)] border border-[var(--color-rule)] px-2 py-1 rounded-full">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`relative px-3.5 py-1 rounded-full text-xs font-medium transition-colors duration-150 ${
                     isActive
-                      ? 'text-white'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
+                      ? 'text-[var(--color-ink)] font-semibold'
+                      : 'text-[var(--color-muted)] hover:text-[var(--color-ink)]'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeNavTab"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 border border-indigo-500/40"
-                      transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
+                      className="absolute inset-0 rounded-full bg-[var(--color-paper-2)] border border-[var(--color-rule-strong)]"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
@@ -89,7 +86,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/quote"
-              className="hidden sm:inline-flex items-center gap-2 text-xs md:text-sm font-semibold px-4 md:px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] border border-white/20"
+              className="hidden sm:inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-lg bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white shadow-sm transition-colors duration-150"
             >
               <span>Get Estimate</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -99,7 +96,7 @@ export default function Navbar() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle navigation"
-              className="md:hidden p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="md:hidden p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-ink)] hover:bg-[var(--color-paper-3)] transition-colors"
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

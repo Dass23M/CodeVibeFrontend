@@ -7,7 +7,6 @@ import LoadingScreen from '@/components/ui/LoadingScreen';
 import PageTransitionLoader from '@/components/ui/PageTransitionLoader';
 import ChatWidget from '@/components/layout/ChatWidget';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
-import CustomCursor from '@/components/ui/CustomCursor';
 import { localBusinessSchema, websiteSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -74,10 +73,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="antialiased bg-[#08090D] text-slate-100 selection:bg-indigo-500 selection:text-white"
-        style={{ overflowX: 'hidden' }}
+        className="antialiased bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-[var(--color-accent)] selection:text-white"
+        style={{ overflowX: 'clip' }}
       >
-        <CustomCursor />
         <LoadingScreen />
         <PageTransitionLoader />
         <Navbar />
