@@ -6,7 +6,6 @@ import FeaturedProjects from '@/components/home/FeaturedProjects';
 import DesignPhilosophy from '@/components/home/DesignPhilosophy';
 import ProcessSection from '@/components/home/ProcessSection';
 import TechStackSection from '@/components/home/TechStackSection';
-import AboutStudioSection from '@/components/home/AboutStudioSection';
 import Testimonials from '@/components/ui/Testimonials';
 import CTASection from '@/components/home/CTASection';
 import { generatePageMetadata } from '@/lib/seo';
@@ -26,16 +25,16 @@ export const metadata: Metadata = generatePageMetadata({
 export default function HomePage() {
   return (
     <div className="bg-[#FFFFFF] min-h-screen text-[#111111] selection:bg-[#111111] selection:text-white">
-      {/* 01. Hero Section */}
+      {/* 01. Hero with Apple-grade Floating Product Showcase */}
       <Hero />
 
-      {/* 02. Credibility Matrix */}
+      {/* 02. Subtle Credibility Matrix */}
       <TrustBadges />
 
       {/* 03. Editorial Expanding Services System */}
       <EditorialServices />
 
-      {/* 04. Selected Work with Varied Proportions */}
+      {/* 04. Selected Work — Dominated by High-Res UI Imagery */}
       <FeaturedProjects />
 
       {/* 05. Design Philosophy */}
@@ -44,13 +43,10 @@ export default function HomePage() {
       {/* 06. Process Progression Timeline */}
       <ProcessSection />
 
-      {/* 07. Modern Technology System */}
+      {/* 07. Modern Technology Stack */}
       <TechStackSection />
 
-      {/* 08. About Studio Narrative */}
-      <AboutStudioSection />
-
-      {/* 09. Testimonials & Client Feedback */}
+      {/* 08. Verified Client Feedback */}
       <section className="py-24 md:py-32 bg-[#FFFFFF] relative border-b border-[#EAEAEA]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           <div className="text-left max-w-2xl mb-16">
@@ -69,7 +65,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. Final Statement CTA */}
+      {/* 09. Final Statement CTA */}
       <CTASection />
     </div>
   );
