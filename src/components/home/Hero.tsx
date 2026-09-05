@@ -25,18 +25,6 @@ export default function Hero() {
         {/* Top Centered Headline & Statement (Spacious, Breathable, Confident) */}
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center mb-12 sm:mb-16">
           
-          {/* Studio Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F7F7F7] border border-[#EAEAEA] mb-6"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
-            <span className="text-xs font-mono font-medium tracking-widest text-[#6B6B6B] uppercase">
-              CODE VIBE — DIGITAL TECHNOLOGY STUDIO
-            </span>
-          </motion.div>
 
           {/* Master Headline */}
           <motion.h1
